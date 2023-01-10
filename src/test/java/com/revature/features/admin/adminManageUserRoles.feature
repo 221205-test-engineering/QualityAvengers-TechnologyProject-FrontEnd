@@ -1,4 +1,4 @@
-Feature: Manage user roles
+Feature: Admin manage user roles
 
   Scenario: Managing user roles
     Given User logged in as Admin

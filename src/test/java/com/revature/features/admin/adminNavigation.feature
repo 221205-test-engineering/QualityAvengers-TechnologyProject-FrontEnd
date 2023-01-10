@@ -1,7 +1,8 @@
 Feature: Admin Navigation through view buttons
 
-  Background: User logged in as Admin
-              Admin is on the Admin page
+  Background:
+      Given User logged in as Admin
+      Given Admin is on the Admin page
 
     Scenario: View Games
       When Admin clicks view games button
