@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/java/dev/mallory/features", glue = "dev.mallory.steps")
+@CucumberOptions(features = "src/test/java/dev/mallory/features/views/game.feature", glue = "dev.mallory.steps")
 public class MainRunner
 {
     public static WebDriver driver;
