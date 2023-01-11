@@ -14,7 +14,7 @@ public class GamePage
         PageFactory.initElements(driver,this);
     }
 
-    @FindBy(xpath = "//title")
-    public WebElement gamePageTitle;
+    @FindBy(xpath = "/html/body/table/thead/tr/th[1]")
+    public WebElement gameID;
 
 }
