@@ -1,34 +1,36 @@
 package dev.sony.admin.steps;
 
-import dev.sony.admin.pages.AdminPage;
-import dev.sony.admin.pages.AdminViewsGamePage;
-import dev.sony.admin.pages.LoginPage;
+import dev.sony.admin.pages.*;
 import dev.sony.admin.runner.AdminRunner;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static junit.framework.TestCase.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AdminViewsStepImpn {
     public static WebDriver driver = AdminRunner.driver;
 
-    LoginPage login = new LoginPage(driver);
+    LoginPage login = AdminRunner.login;
 
-    AdminPage admin = new AdminPage(driver);
-    AdminViewsGamePage viewGames = new AdminViewsGamePage(driver);
+    AdminPage admin = AdminRunner.admin;
+    AdminViewsGamePage viewGames = AdminRunner.viewGames;
+    AdminViewsSeasonPage seasons = AdminRunner.seasons;
+    AdminViewsVenuePage venues = AdminRunner.venues;
     @Given("User logged in as Admin")
     public void user_logged_in_as_admin(){
         driver.get("http://127.0.0.1:5500/index.html");
-        login.login.click();
+        driver.findElement(By.xpath("//a[text() = 'Login']")).click();
         login.username.sendKeys("Mohan");
-        login.password.sendKeys("Welcom2023");
+        login.password.sendKeys("Welcome2023");
         login.mainLogin.click();
     }
     @When("Admin clicks view games button")
@@ -37,6 +39,7 @@ public class AdminViewsStepImpn {
     }
     @Then("Admin is on the view games page")
     public void admin_is_on_the_view_games_page(){
+
         assertTrue(viewGames.gameHeaderList.toString().length()>0);
     }
     @Then("Admin should see all the games scheduled")
@@ -55,6 +58,7 @@ public class AdminViewsStepImpn {
     }
     @Then("Shows referees details")
     public void shows_referees_details(){
+
         List<String> referee = new ArrayList<>();
         for(WebElement details: viewGames.refereeDetails){
             referee.add(details.getText());
@@ -77,6 +81,63 @@ public class AdminViewsStepImpn {
     }
     @Then("Admin is on the Admin page")
     public void admin_is_on_admin_page(){
+
         assertEquals(admin.adminPage.getText(),"Admin Page");
     }
+
+    // View Seasons
+
+    @When("Admin clicks view seasons button")
+    public void admin_clicks_view_seasons_button() {
+        admin.viewSeasons.click();
+
+    }
+    @Then("Admin is on the view season page")
+    public void admin_is_on_the_view_season_page() {
+       assertTrue(seasons.seasonName.getText().contains("Season Name"));
+
+    }
+    @Then("Admin should see all the seasons")
+    public void admin_should_see_all_the_seasons() {
+       List<String> seasonData = new ArrayList<>();
+       for(WebElement seas : seasons.seasonList){
+           seasonData.add(seas.getText());
+       }
+       for(String listOfData : seasonData){
+           System.out.println(listOfData);
+       }
+    }
+    @When("Admin clicks seasons back button")
+    public void admin_clicks_seasons_back_button(){
+        seasons.seasonToAdminPage.click();
+    }
+
+
+    // View Venues
+
+
+    @When("Admin clicks view venues button")
+    public void admin_clicks_view_venues_button() {
+        admin.viewVenue.click();
+    }
+    @Then("Admin is on the view venue page")
+    public void admin_is_on_the_view_venue_page() {
+        assertTrue(venues.venueName.getText().contains("Venue Name"));
+    }
+    @Then("Admin should see all the venues")
+    public void admin_should_see_all_the_venues() {
+        List<String> venue = new ArrayList<>();
+        for(WebElement ven : venues.venueList){
+            venue.add(ven.getText());
+        }
+        for(String venues : venue){
+            System.out.println(venues);
+        }
+    }
+
+    @When("Admin clicks venues back button")
+    public void admin_clicks_venues_back_button(){
+        venues.venueToAdminPage.click();
+    }
+
 }

@@ -9,8 +9,7 @@ Feature: Admin Schedules games
     Then Admin is on the game schedule page
 
   Scenario: Time and Location
-    When Admin clicks venue list options
-    Then Admin should be able to select one of the venues option
+    When Admin select one of the venues option
     When Admin clicks date button
     Then Admin should be able to select a date from the date panel appears
     Then Date and current time should appear at date input form
@@ -38,7 +37,7 @@ Feature: Admin Schedules games
     Then Admin should be able to select one of from the options
     When Admin clicks schedule button
     Then A message appears showing game scheduled should appear
-    When Admin clicks back button
+    When Admin clicks back button from game schedule page
     Then Admin is on the Admin page
 
 

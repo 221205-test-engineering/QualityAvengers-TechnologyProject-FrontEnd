@@ -7,9 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class AdminScheduleGames {
+public class AdminScheduleGamesPage {
     public WebDriver driver;
-    public AdminScheduleGames(WebDriver driver){
+    public AdminScheduleGamesPage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }

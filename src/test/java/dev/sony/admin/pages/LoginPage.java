@@ -11,8 +11,7 @@ public class LoginPage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    @FindBy(xpath = "//a[text() = 'Login']")
-    public WebElement login;
+
     @FindBy(name = "username")
     public WebElement username;
     @FindBy(name = "password")
