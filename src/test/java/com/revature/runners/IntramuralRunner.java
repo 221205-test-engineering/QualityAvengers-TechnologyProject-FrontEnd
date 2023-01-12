@@ -3,13 +3,15 @@ package com.revature.runners;
 import com.revature.pages.*;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/java/com/revature/features", glue = "com/revature/steps")
+@CucumberOptions(features = "src/test/java/com/revature/features/gameTeam/captain.feature", glue = "com/revature/steps/gameTeam")
 
 public class IntramuralRunner {
     public static WebDriver driver;
@@ -21,8 +23,18 @@ public class IntramuralRunner {
 
     @BeforeClass
     public static void setup(){
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        indexPage = new IndexPage(driver);
+        loginPage = new LoginPage(driver);
+        cptHomePage = new CptHomePage(driver);
+        teamApplicationPage = new TeamApplicationPage(driver);
+        teamRequestPage = new TeamRequestPage(driver);
+
     }
 
-    public static void teardown(){driver.quit();}
+    @AfterClass
+    public static void teardown(){
+        driver.quit();
+    }
 }
