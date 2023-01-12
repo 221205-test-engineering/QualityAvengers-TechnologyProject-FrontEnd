@@ -19,7 +19,7 @@ public class IntramuralRunner {
     public static IndexPage indexPage;
     public static LoginPage loginPage;
     public static CptHomePage cptHomePage;
-    public static com.revature.pages.AppDenyPage AppDenyPage;
+    public static AppDenyPage AppDenyPage;
 
     @BeforeClass
     public static void setup(){
