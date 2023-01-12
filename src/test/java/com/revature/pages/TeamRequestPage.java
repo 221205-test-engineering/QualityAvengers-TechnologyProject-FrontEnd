@@ -22,4 +22,13 @@ public class TeamRequestPage
 
     @FindBy(xpath = "//*[@id=\"teamRequests\"]/tr/td[6]/button")
     public WebElement seePlayerButton;
+
+    @FindBy(xpath = "//table/tbody/tr[last()]/td[3]")
+    public WebElement requestList;
+
+    @FindBy(xpath = "//body/section")
+    public WebElement playerInfoSection;
+
+    @FindBy(xpath = "//*[@id=\"teamRequests\"]/tr[last()]/td[3]")
+    public WebElement requestStatus;
 }

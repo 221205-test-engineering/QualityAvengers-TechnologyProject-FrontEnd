@@ -16,7 +16,7 @@ public class captainSI {
     public IndexPage indexPage = IntramuralRunner.indexPage;
     public LoginPage loginPage = IntramuralRunner.loginPage;
     public CptHomePage cptHomePage = IntramuralRunner.cptHomePage;
-    public TeamApplicationPage teamApplicationPage = IntramuralRunner.teamApplicationPage;
+    public TeamRequestPage teamRequestPage = IntramuralRunner.teamRequestPage;
 
     @Given("the captain is logged in to the system")
     public void the_captain_is_logged_in_to_the_system() {
@@ -37,67 +37,69 @@ public class captainSI {
     @Then("a list of all players requesting to join the team should be displayed with their status reading pending")
     public void a_list_of_all_players_requesting_to_join_the_team_should_be_displayed_with_their_status_reading_pending() {
         // Write code here that turns the phrase above into concrete actions
-        teamApplicationPage.requestList.isDisplayed();
-        assertTrue(teamApplicationPage.requestList.getText().equals("pending"));
+        teamRequestPage.requestList.isDisplayed();
+        assertTrue(teamRequestPage.requestList.getText().equals("pending"));
     }
 
     @Then("a list of all players requesting to join the team should be displayed")
     public void a_list_of_all_players_requesting_to_join_the_team_should_be_displayed() {
         // Write code here that turns the phrase above into concrete actions
-        teamApplicationPage.requestList.isDisplayed();
+        assertTrue(teamRequestPage.requestList.isDisplayed());
     }
 
     @When("the captain clicks on see the player")
     public void the_captain_clicks_on_see_the_player() {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        teamRequestPage.seePlayerButton.click();
     }
 
     @Then("the details of the selected player should be displayed")
     public void the_details_of_the_selected_player_should_be_displayed() {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        assertTrue(teamRequestPage.playerInfoSection.isDisplayed());
+        // need to match player id to requester id field
     }
 
     @When("the captain clicks on the approve button next to a player's name")
     public void the_captain_clicks_on_the_approve_button_next_to_a_player_s_name() {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        teamRequestPage.approveButton.click();
     }
 
     @Then("an alert says the approval has been successful")
     public void an_alert_says_the_approval_has_been_successful() {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        assertEquals("successful", driver.switchTo().alert().getText().contains("successful"));
     }
 
     @When("the captain clicks OK")
     public void the_captain_clicks_ok() {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        driver.switchTo().alert().accept();
     }
 
     @Then("the request status changes to accepted")
     public void the_request_status_changes_to_accepted() {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        assertEquals("accepted",teamRequestPage.requestStatus.getText());
     }
 
     @When("the captain clicks on the deny button next to a player's name")
     public void the_captain_clicks_on_the_deny_button_next_to_a_player_s_name() {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        teamRequestPage.denyButton.click();
     }
 
     @Then("an alert says the deny has been successful")
     public void an_alert_says_the_deny_has_been_successful() {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        assertEquals("successful", driver.switchTo().alert().getText().contains("successful"));
+        // need to custom app and deny message
     }
 
     @Then("the request status changes to denied")
     public void the_request_status_changes_to_denied() {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        assertEquals("denied",teamRequestPage.requestStatus.getText());
     }
 }
