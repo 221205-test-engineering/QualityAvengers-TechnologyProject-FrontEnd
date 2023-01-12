@@ -1,9 +1,9 @@
 package com.revature.runners;
 
-import com.revature.pages.AppDenyPage;
 import com.revature.pages.CptHomePage;
 import com.revature.pages.IndexPage;
 import com.revature.pages.LoginPage;
+import com.revature.pages.TeamApplicationPage;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.BeforeClass;
@@ -19,7 +19,7 @@ public class IntramuralRunner {
     public static IndexPage indexPage;
     public static LoginPage loginPage;
     public static CptHomePage cptHomePage;
-    public static AppDenyPage AppDenyPage;
+    public static TeamApplicationPage teamApplicationPage;
 
     @BeforeClass
     public static void setup(){

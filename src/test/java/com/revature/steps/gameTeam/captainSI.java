@@ -1,9 +1,6 @@
 package com.revature.steps.gameTeam;
 
-import com.revature.pages.AppDenyPage;
-import com.revature.pages.CptHomePage;
-import com.revature.pages.IndexPage;
-import com.revature.pages.LoginPage;
+import com.revature.pages.*;
 import com.revature.runners.IntramuralRunner;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -19,7 +16,7 @@ public class captainSI {
     public IndexPage indexPage = IntramuralRunner.indexPage;
     public LoginPage loginPage = IntramuralRunner.loginPage;
     public CptHomePage cptHomePage = IntramuralRunner.cptHomePage;
-    public AppDenyPage appDenyPage = IntramuralRunner.AppDenyPage;
+    public TeamApplicationPage teamApplicationPage = IntramuralRunner.teamApplicationPage;
 
     @Given("the captain is logged in to the system")
     public void the_captain_is_logged_in_to_the_system() {
@@ -40,14 +37,14 @@ public class captainSI {
     @Then("a list of all players requesting to join the team should be displayed with their status reading pending")
     public void a_list_of_all_players_requesting_to_join_the_team_should_be_displayed_with_their_status_reading_pending() {
         // Write code here that turns the phrase above into concrete actions
-        appDenyPage.requestList.isDisplayed();
-        assertTrue(appDenyPage.requestList.getText().equals("pending"));
+        teamApplicationPage.requestList.isDisplayed();
+        assertTrue(teamApplicationPage.requestList.getText().equals("pending"));
     }
 
     @Then("a list of all players requesting to join the team should be displayed")
     public void a_list_of_all_players_requesting_to_join_the_team_should_be_displayed() {
         // Write code here that turns the phrase above into concrete actions
-        appDenyPage.requestList.isDisplayed();
+        teamApplicationPage.requestList.isDisplayed();
     }
 
     @When("the captain clicks on see the player")
