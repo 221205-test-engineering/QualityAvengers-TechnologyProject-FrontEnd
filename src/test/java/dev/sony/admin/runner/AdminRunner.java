@@ -8,6 +8,8 @@ import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+//SONI CAN YOU MOVE YOUR FILES INTO THE SAME PACKAGES AS THE OTHERS?
+//IT MAKES IT EASIER WHAT ALL EVERYONE HAS WORKED ON
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/java/dev/sony/admin/features", glue = "admin.steps")

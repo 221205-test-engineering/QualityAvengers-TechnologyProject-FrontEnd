@@ -16,4 +16,37 @@ public class MainPage
 
     @FindBy(xpath = "/html/body/a[2]")
     public WebElement gameLink;
+
+    @FindBy(xpath = "/html/body/a[4]")
+    public WebElement seasonLink;
+
+    @FindBy(xpath = "/html/body/a[3]")
+    public WebElement venueLink;
+
+    @FindBy(xpath = "/html/body/a[1]")
+    public WebElement editProfileLink;
+
+    @FindBy(xpath = "/html/body/a[5]")
+    public WebElement teamRequestLink;
+
+    @FindBy(xpath = "/html/body/a[6]")
+    public WebElement viewTeamLink;
+
+    @FindBy(xpath = "/html/body/a[5]")
+    public WebElement editOfficiateLink;
+
+    @FindBy(xpath = "/html/body/a[6]")
+    public WebElement officiateGamesLink;
+
+    @FindBy(xpath = "/html/body/a[5]")
+    public WebElement addSeasonLink;
+
+    @FindBy(xpath = "/html/body/a[6]")
+    public WebElement manageUserRolesLink;
+
+    @FindBy(xpath = "/html/body/a[7]")
+    public WebElement scheduleGameLink;
+
+    @FindBy(xpath = "/html/body/a[5]")
+    public WebElement teamApplicationLink;
 }

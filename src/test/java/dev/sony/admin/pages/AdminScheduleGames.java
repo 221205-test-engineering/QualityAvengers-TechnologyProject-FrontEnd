@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
+//THIS PAGE HAS BEEN INTERGRATED AND NEEDS TO BE DELETED.
+//PLEASE USE THE NEW ONE AND THE WEB ELEMENTS IT REFERENCES
 
 public class AdminScheduleGames {
     public WebDriver driver;
