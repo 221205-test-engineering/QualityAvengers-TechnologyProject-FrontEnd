@@ -1,23 +1,23 @@
 package dev.sony.admin.steps;
 
 import dev.sony.admin.pages.AdminPage;
-import dev.sony.admin.pages.LoginPage;
 import dev.sony.admin.pages.ManageUserRolePage;
 import dev.sony.admin.runner.AdminRunner;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.opentest4j.AssertionFailedError;
+import java.time.Duration;
 
-import java.util.List;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AdminManageUserRolesImpn {
     public static WebDriver driver = AdminRunner.driver;
-
-    LoginPage login = new LoginPage(driver);
 
     AdminPage admin = new AdminPage(driver);
 
@@ -37,70 +37,58 @@ public class AdminManageUserRolesImpn {
            assertTrue(roles.isDisplayed());
        }
     }
+    @When("Admin clicks Promote To Referee button")
+    public void admin_clicks_promote_to_referee_button() {
+        userRoles.promReferee.click();
+    }
+    @Then("The role should be promoted to referee")
+    public void the_role_should_be_shocked() {
+        new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(10))
+                .pollingEvery(Duration.ofSeconds(2))
+                .ignoring(AssertionFailedError.class)
+                .until(ExpectedConditions.textToBePresentInElement(userRoles.role5, "referee"));
+        assertEquals(userRoles.role5.getText(), "referee");
+
+    }
     @When("Admin clicks Demote To Player button")
     public void admin_clicks_demote_to_player_button(){
-        for(WebElement row : userRoles.listOfUsers){
-            List<WebElement> Cells = row.findElements(By.tagName("td[4]"));
-            for(WebElement cell : Cells) {
-                if (cell.getText().equals("Demote To Player")) {
-                    cell.click();
-                    break;
-                }
-            }
-        }
+        new WebDriverWait(driver, Duration.ofSeconds(15))
+                .until(ExpectedConditions.visibilityOf(userRoles.changeRole1));
+        userRoles.changeRole1.click();
     }
     @Then("The role should be demoted to player")
     public void the_role_should_be_demoted_to_player(){
-
-
-    }
-    @When("Admin clicks Promote To Referee button")
-    public void admin_clicks_promote_to_referee_button() {
-    for(WebElement row : userRoles.listOfUsers){
-        List<WebElement> Cells = row.findElements(By.tagName("td[4]"));
-        for(WebElement cell : Cells) {
-            if (cell.getText().equals("Promote To Referee")) {
-                cell.click();
-                break;
-                }
-            }
-        }
-    }
-    @Then("The role should be promoted to referee")
-    public void the_role_should_be_shocked(){
+        new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(10))
+                .pollingEvery(Duration.ofSeconds(2))
+                .ignoring(AssertionFailedError.class)
+                .until(ExpectedConditions.textToBePresentInElement(userRoles.role5, "player"));
+        assertEquals(userRoles.role5.getText(), "player");
 
     }
+
     @When("Admin clicks Promote To Admin button")
-    public void admin_clicks_promote_to_admin_button(){
-        for(WebElement row : userRoles.listOfUsers){
-            List<WebElement> Cells = row.findElements(By.tagName("td[4]"));
-            for(WebElement cell : Cells) {
-                if (cell.getText().equals("Promote To Admin")) {
-                    cell.click();
-                    break;
-                }
-            }
-        }
+    public void admin_clicks_promote_to_admin_button() throws InterruptedException {
+        userRoles.changeRole1.click();
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOf(userRoles.changeRole2));
+        userRoles.changeRole2.click();
     }
     @Then("The role should be promoted to Admin")
     public void the_role_should_be_promoted_to_admin(){
-
+        new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(10))
+                .pollingEvery(Duration.ofSeconds(2))
+                .ignoring(AssertionFailedError.class)
+                .until(ExpectedConditions.textToBePresentInElement(userRoles.role8, "admin"));
+        assertEquals(userRoles.role8.getText(), "admin");
     }
-    @When("Admin clicks Demote To Referee button")
-    public void admin_clicks_demote_to_referee_button(){
-        for(WebElement row : userRoles.listOfUsers){
-            List<WebElement> Cells = row.findElements(By.tagName("td[4]"));
-            for(WebElement cell : Cells) {
-                if (cell.getText().equals("Demote To Referee")) {
-                    cell.click();
-                    break;
-                }
-            }
-        }
-    }
-    @Then("The role should be demoted to referee")
-    public void the_role_should_be_demoted_to_referee(){
-
+    @When("Admin clicks demote from Admin to player button")
+    public void admin_clicks_demote_from_admin_to_player_button(){
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOf(userRoles.changeRole2));
+        userRoles.changeRole2.click();
     }
     @When("Admin clicks user roles back button")
     public void admin_clicks_user_roles_back_button(){

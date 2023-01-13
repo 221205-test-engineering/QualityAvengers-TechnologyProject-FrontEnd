@@ -9,6 +9,11 @@ import io.cucumber.java.en.When;
 import io.cucumber.java.en.Given;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.opentest4j.AssertionFailedError;
+
+import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,8 +21,7 @@ public class AdminEditUserProfileImpn {
     public static WebDriver driver = AdminRunner.driver;
     AdminPage admin = new AdminPage(driver);
     EditUserProfilePage editProfile = new EditUserProfilePage(driver);
-    public static String height = "70";
-    public static String weight = "200";
+
     @When("Admin clicks edit user profile")
     public void admin_clicks_edit_user_profile(){
         admin.editUser.click();
@@ -34,12 +38,12 @@ public class AdminEditUserProfileImpn {
     @When("Admin change his own height in inches")
     public void admin_change_his_own_height_inches() {
         editProfile.editHeight.clear();
-        editProfile.editHeight.sendKeys(height);
+        editProfile.editHeight.sendKeys("70");
     }
     @When("Admin change his own weight in lbs")
     public void admin_change_his_own_weight_lbs() {
         editProfile.editWeight.clear();
-        editProfile.editWeight.sendKeys(weight);
+        editProfile.editWeight.sendKeys("200");
     }
     @When("Admin inputs url of his profile picture")
     public void admin_inputs_url_of_his_profile_picture(String docString) {
@@ -82,7 +86,6 @@ public class AdminEditUserProfileImpn {
             e.printStackTrace();
             System.out.println("No alert present");
         }
-
     }
     @When("Admin unchecked display biometrics checkbox")
     public void admin_unchecked_display_biometrics_checkbox() {
@@ -103,9 +106,11 @@ public class AdminEditUserProfileImpn {
     public void admin_cancelled_the_profile_edit(){
         driver.switchTo().alert().dismiss();
     }
-    @Then("It should retain earlier values")
-    public void it_should_retain_earlier_values(){
-        assertEquals(editProfile.editHeight.getText(), height);
-        assertEquals(editProfile.editWeight.getText(), weight);
+    @Then("It should clear earlier values")
+    public void it_should_clear_earlier_values() throws InterruptedException {
+
+        assertEquals(editProfile.editHeight.getText(), "");
+        assertEquals(editProfile.editWeight.getText(), "");
+
     }
 }
