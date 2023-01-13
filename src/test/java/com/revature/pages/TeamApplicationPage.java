@@ -22,4 +22,16 @@ public class TeamApplicationPage
 
     @FindBy(xpath = "/html/body/div/button")
     public WebElement applyButton;
+
+    @FindBy(xpath = "/html/body/table")
+    public WebElement teamList;
+
+    @FindBy(xpath = "/html/body/section")
+    public WebElement cptInfoSection;
+
+    @FindBy(xpath = "/html/body/section/button")
+    public WebElement closeCptSession;
+
+    @FindBy(xpath = "//*[@id=\"teamInfo\"]/tr/td[4]")
+    public  WebElement applicationStatus;
 }

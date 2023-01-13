@@ -49,4 +49,10 @@ public class MainPage
 
     @FindBy(xpath = "/html/body/a[5]")
     public WebElement teamApplicationLink;
+
+    @FindBy(xpath = "/html/body/h1")
+    public WebElement role;
+
+    @FindBy(xpath = "//*[@id=\"teamInfo\"]/tr/td[4]")
+    public  WebElement applicationStatus;
 }
