@@ -6,12 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="QualityAvengers-TechnologyProject-FrontEnd" />
-        <module name="Temp-TechnologyProject-FrontEnd" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Temp-TechnologyProject-FrontEnd" target="19" />
-    </bytecodeTargetLevel>
   </component>
 </project>
