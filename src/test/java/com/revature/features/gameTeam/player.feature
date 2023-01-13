@@ -25,7 +25,6 @@ Feature: Player functionalities
     When the player select a team from the dropdown menu
     And clicks apply
     Then an alert says the application has been successful
-    When the player click OK
     Then the application status changes to pending
 
 #2

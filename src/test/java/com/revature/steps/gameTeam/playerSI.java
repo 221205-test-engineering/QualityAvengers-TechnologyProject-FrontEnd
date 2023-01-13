@@ -152,12 +152,6 @@ public class playerSI {
         driver.switchTo().alert().accept();
     }
 
-//    @When("the player click OK")
-//    public void the_player_click_ok() {
-//        // Write code here that turns the phrase above into concrete actions
-//        driver.switchTo().alert().accept();
-//    }
-
     @Then("the application status changes to pending")
     public void the_application_status_changes_to_pending() {
         // Write code here that turns the phrase above into concrete actions
