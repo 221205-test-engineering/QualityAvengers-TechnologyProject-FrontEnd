@@ -104,7 +104,6 @@ public class AdminViewsStepImpn {
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.elementToBeClickable(seasons.seasonName));
        assertTrue(seasons.seasonName.getText().contains("Season Name"));
-
     }
     @Then("Admin should see all the seasons")
     public void admin_should_see_all_the_seasons() {

@@ -49,5 +49,5 @@ Feature: Edit user profile
     When Admin clicks edit profile submit button
     Then A message should appear for verification
     When Admin cancelled the profile edit
-    Then It should clear earlier values
+    Then It should clear edited values
 

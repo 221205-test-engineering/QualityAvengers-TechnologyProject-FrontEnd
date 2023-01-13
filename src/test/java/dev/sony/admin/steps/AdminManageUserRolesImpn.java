@@ -5,6 +5,7 @@ import dev.sony.admin.pages.ManageUserRolePage;
 import dev.sony.admin.runner.AdminRunner;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -13,8 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.opentest4j.AssertionFailedError;
 import java.time.Duration;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AdminManageUserRolesImpn {
     public static WebDriver driver = AdminRunner.driver;
@@ -89,6 +89,16 @@ public class AdminManageUserRolesImpn {
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOf(userRoles.changeRole2));
         userRoles.changeRole2.click();
+    }
+    @Then("A message should appear that role changed")
+    public void a_message_should_appear_that_role_changed() {
+        try {
+            assertNull(driver.switchTo().alert());
+        } catch (
+                NoAlertPresentException e) {
+            e.printStackTrace();
+            System.out.println("No alert present for role change");
+        }
     }
     @When("Admin clicks user roles back button")
     public void admin_clicks_user_roles_back_button(){

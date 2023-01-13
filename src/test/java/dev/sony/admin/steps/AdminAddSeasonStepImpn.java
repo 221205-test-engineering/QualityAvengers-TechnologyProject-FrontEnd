@@ -2,19 +2,17 @@ package dev.sony.admin.steps;
 
 import dev.sony.admin.pages.AddSeasonPage;
 import dev.sony.admin.pages.AdminPage;
-import dev.sony.admin.pages.LoginPage;
 import dev.sony.admin.runner.AdminRunner;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AdminAddSeasonStepImpn {
     public WebDriver driver = AdminRunner.driver;
+
     public AdminPage admin = AdminRunner.admin;
-    public LoginPage login = AdminRunner.login;
     public AddSeasonPage addSeason = AdminRunner.addSeason;
 
     @When("Admin clicks add season button")

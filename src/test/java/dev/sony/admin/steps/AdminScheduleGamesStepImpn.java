@@ -7,10 +7,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
@@ -90,10 +88,7 @@ public class AdminScheduleGamesStepImpn {
     public void admin_clicks_schedule_button(){
         scheduleGames.schedule.click();
     }
-//    @Then("A message appears showing game scheduled")
-//    public void a_message_appears_showing_game_scheduled(){
-//        assertTrue(driver.switchTo().alert().getText().contains("Game Scheduled"));
-//    }
+
     @When("Admin clicks back button from game schedule page")
     public void admin_clicks_back_button_from_game_schedule_page(){
         scheduleGames.scheduleToAdminPage.click();

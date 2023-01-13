@@ -1,20 +1,12 @@
 package dev.sony.admin.steps;
 
 import dev.sony.admin.pages.AdminPage;
-import dev.sony.admin.pages.AdminViewsGamePage;
 import dev.sony.admin.pages.EditUserProfilePage;
 import dev.sony.admin.runner.AdminRunner;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.en.Given;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.opentest4j.AssertionFailedError;
-
-import java.time.Duration;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AdminEditUserProfileImpn {
@@ -84,7 +76,7 @@ public class AdminEditUserProfileImpn {
             assertNull(driver.switchTo().alert());
         }catch(NoAlertPresentException e){
             e.printStackTrace();
-            System.out.println("No alert present");
+            System.out.println("No alert present username cannot be changed");
         }
     }
     @When("Admin unchecked display biometrics checkbox")
@@ -106,11 +98,9 @@ public class AdminEditUserProfileImpn {
     public void admin_cancelled_the_profile_edit(){
         driver.switchTo().alert().dismiss();
     }
-    @Then("It should clear earlier values")
-    public void it_should_clear_earlier_values() throws InterruptedException {
-
+    @Then("It should clear edited values")
+    public void it_should_clear_edited_values() throws InterruptedException {
         assertEquals(editProfile.editHeight.getText(), "");
         assertEquals(editProfile.editWeight.getText(), "");
-
     }
 }
