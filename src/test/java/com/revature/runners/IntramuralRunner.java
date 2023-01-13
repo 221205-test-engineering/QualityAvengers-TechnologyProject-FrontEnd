@@ -31,6 +31,7 @@ public class IntramuralRunner {
         cptHomePage = new CptHomePage(driver);
         teamApplicationPage = new TeamApplicationPage(driver);
         teamRequestPage = new TeamRequestPage(driver);
+        mainPage = new MainPage(driver);
 
     }
 

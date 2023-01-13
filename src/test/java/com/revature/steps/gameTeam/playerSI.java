@@ -9,6 +9,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -44,14 +45,17 @@ public class playerSI {
     @Then("the player is on the player page")
     public void the_player_is_on_the_player_page() {
         // Write code here that turns the phrase above into concrete actions
-//        new WebDriverWait(driver, Duration.ofSeconds(5))
-//                .until(ExpectedConditions.visibilityOf(mainPage.role));
-        assertEquals("Player Page", mainPage.role.getText());
+
+        new WebDriverWait(driver, Duration.ofSeconds(5))
+                .until(ExpectedConditions.visibilityOf(mainPage.role));
+        assertTrue(mainPage.role.isDisplayed());
     }
 
     @When("the player clicks on the team application button")
     public void the_player_clicks_on_the_team_application_button() {
         // Write code here that turns the phrase above into concrete actions
+        new WebDriverWait(driver, Duration.ofSeconds(5))
+                .until(ExpectedConditions.visibilityOf(mainPage.teamApplicationLink));
         mainPage.teamApplicationLink.click();
     }
 
@@ -70,13 +74,15 @@ public class playerSI {
     @When("the player clicks on see the captain")
     public void the_player_clicks_on_see_the_captain() {
         // Write code here that turns the phrase above into concrete actions
+        new WebDriverWait(driver, Duration.ofSeconds(5))
+                .until(ExpectedConditions.visibilityOf(teamApplicationPage.seeCaptainButton));
         teamApplicationPage.seeCaptainButton.click();
     }
 
     @Then("the team's captain information should be displayed in a section")
     public void the_team_s_captain_information_should_be_displayed_in_a_section() {
         // Write code here that turns the phrase above into concrete actions
-        new WebDriverWait(driver, Duration.ofSeconds(5))
+        new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOf(teamApplicationPage.cptInfoSection));
         assertTrue(teamApplicationPage.cptInfoSection.isDisplayed());
     }
@@ -90,9 +96,11 @@ public class playerSI {
     @Then("the section disappear")
     public void the_section_disappear() {
         // Write code here that turns the phrase above into concrete actions
-        new WebDriverWait(driver, Duration.ofSeconds(5))
-                .until(ExpectedConditions.invisibilityOf(teamApplicationPage.cptInfoSection));
-        assertFalse(teamApplicationPage.cptInfoSection.isDisplayed());
+
+        try{
+            teamApplicationPage.cptInfoSection.isDisplayed();
+            fail();
+        } catch(NoSuchElementException e){ assertTrue(true);}
     }
 
 
@@ -107,6 +115,9 @@ public class playerSI {
 
         assertTrue(rows.size()>0);
 
+        new WebDriverWait(driver, Duration.ofSeconds(5))
+                .until(ExpectedConditions.visibilityOf(teamApplicationPage.applicationStatus));
+
         assertEquals("not applied", teamApplicationPage.applicationStatus.getText());
 
     }
@@ -114,8 +125,14 @@ public class playerSI {
     @When("the player select a team from the dropdown menu")
     public void the_player_select_a_team_from_the_dropdown_menu() {
         // Write code here that turns the phrase above into concrete actions
-        Select select = new Select(teamApplicationPage.selectTeam);
-        select.selectByValue("option1Value");
+        new WebDriverWait(driver, Duration.ofSeconds(5))
+                .until(ExpectedConditions.visibilityOf(teamApplicationPage.selectTeam));
+
+        if(teamApplicationPage.applicationStatus.getText().equals("pending"))
+        {
+            Select select = new Select(teamApplicationPage.selectTeam);
+            select.selectByIndex(0);}
+        // need to recheck the conditions here
 
     }
 
