@@ -21,6 +21,8 @@ public class IntramuralRunner {
     public static TeamApplicationPage teamApplicationPage;
     public static TeamRequestPage teamRequestPage;
     public static MainPage mainPage;
+    public static OfficiatingChoicePage officiatingChoicePage;
+    public static OfficiateGamePage officiateGamePage;
 
     @BeforeClass
     public static void setup(){
@@ -32,6 +34,8 @@ public class IntramuralRunner {
         teamApplicationPage = new TeamApplicationPage(driver);
         teamRequestPage = new TeamRequestPage(driver);
         mainPage = new MainPage(driver);
+        officiatingChoicePage = new OfficiatingChoicePage(driver);
+        officiateGamePage = new OfficiateGamePage(driver);
 
     }
 

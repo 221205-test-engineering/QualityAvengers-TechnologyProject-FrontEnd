@@ -15,7 +15,7 @@ Feature: Referee functionalities
 
   Scenario: Edit scorecard for a game
     Given the referee is logged in to the system
-    When the referee clicks on the officiate games button for a particular game
+    When the referee clicks on the officiate games button
     Then the referee should see a list of games they've chosen to officiate
     When the referee clicks on the update scores button
     Then a modal should appear with a scorecard
