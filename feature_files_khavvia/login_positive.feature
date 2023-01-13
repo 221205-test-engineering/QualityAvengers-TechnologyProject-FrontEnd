@@ -1,4 +1,4 @@
-Feature: Login
+Feature: Login 
 
   Scenario Outline: Login with correct credentials
     Given The employee is on the login page
