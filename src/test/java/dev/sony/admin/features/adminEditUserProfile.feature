@@ -2,6 +2,7 @@ Feature: Edit user profile
 
   Background:
     Given User logged in as Admin
+    Given Admin is on the Admin page
 
   Scenario: Positive profile edit
     When Admin clicks edit user profile
@@ -11,7 +12,7 @@ Feature: Edit user profile
     When Admin change his own weight in lbs
     When Admin inputs url of his profile picture
             """
-            C:/Users/Soni Mohandas/Pictures/One_horned.png
+            https://pixabay.com/illustrations/car-yellow-png-967387?size=150x150&set=set1
             """
 
     When Admin checks checkbox
@@ -33,5 +34,20 @@ Feature: Edit user profile
     When Admin verifies profile editing
     Then An message should appear for the successful profile update
 
-
+  Scenario: Profile edit cancel
+    When Admin clicks edit user profile
+    Then Admin is on the edit user profile page
+    When Admin update his own height in inches
+    """
+    "75"
+    """
+    When Admin update his own weight in lbs
+    """
+    "180"
+    """
+    When Admin checks checkbox
+    When Admin clicks edit profile submit button
+    Then A message should appear for verification
+    When Admin cancelled the profile edit
+    Then It should retain earlier values
 

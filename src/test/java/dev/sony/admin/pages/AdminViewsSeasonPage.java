@@ -12,7 +12,7 @@ public class AdminViewsSeasonPage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    @FindBy(xpath = "//th[text()='Season Name'")
+    @FindBy(xpath = "//thead/tr/th[text()='Season Name']")
     public WebElement seasonName;
     @FindBy(id = "seasonTableBody")
     public List<WebElement> seasonList;

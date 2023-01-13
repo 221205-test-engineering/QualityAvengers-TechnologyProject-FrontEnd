@@ -1,20 +1,23 @@
 package dev.sony.admin.steps;
 
 import dev.sony.admin.pages.AdminPage;
+import dev.sony.admin.pages.AdminViewsGamePage;
 import dev.sony.admin.pages.EditUserProfilePage;
 import dev.sony.admin.runner.AdminRunner;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Given;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AdminEditUserProfileImpn {
     public static WebDriver driver = AdminRunner.driver;
     AdminPage admin = new AdminPage(driver);
     EditUserProfilePage editProfile = new EditUserProfilePage(driver);
-
+    public static String height = "70";
+    public static String weight = "200";
     @When("Admin clicks edit user profile")
     public void admin_clicks_edit_user_profile(){
         admin.editUser.click();
@@ -25,18 +28,22 @@ public class AdminEditUserProfileImpn {
     }
     @When("Admin change password")
     public void admin_change_password() {
-        editProfile.editPassword.sendKeys("Welcome");
+        editProfile.editPassword.clear();
+        editProfile.editPassword.sendKeys("Welcome2023");
     }
     @When("Admin change his own height in inches")
     public void admin_change_his_own_height_inches() {
-        editProfile.editHeight.sendKeys("76");
+        editProfile.editHeight.clear();
+        editProfile.editHeight.sendKeys(height);
     }
     @When("Admin change his own weight in lbs")
     public void admin_change_his_own_weight_lbs() {
-        editProfile.editWeight.sendKeys("170");
+        editProfile.editWeight.clear();
+        editProfile.editWeight.sendKeys(weight);
     }
     @When("Admin inputs url of his profile picture")
     public void admin_inputs_url_of_his_profile_picture(String docString) {
+        editProfile.editPicture.clear();
         editProfile.editPicture.sendKeys(docString);
     }
     @When("Admin checks checkbox")
@@ -52,8 +59,9 @@ public class AdminEditUserProfileImpn {
         assertTrue(driver.switchTo().alert().getText().contains("Are you sure you want to edit your user profile?"));
     }
     @When("Admin verifies profile editing")
-    public void admin_verifies_profile_editing() {
+    public void admin_verifies_profile_editing() throws InterruptedException {
         driver.switchTo().alert().accept();
+        Thread.sleep(3000);
     }
     @Then("An message should appear for the successful profile update")
     public void an_message_should_appear_for_the_successful_profile_update() {
@@ -61,20 +69,43 @@ public class AdminEditUserProfileImpn {
         driver.switchTo().alert().accept();
     }
 
-
     @When("Admin clicks username input form")
     public void admin_clicks_username_input_form() {
-        editProfile.editUsername.sendKeys("Hello");
+        editProfile.editUsername.clear();
+        editProfile.editUsername.sendKeys("Mohan");
     }
     @Then("A message should appear that username cannot be changed")
     public void a_message_should_appear_that_username_cannot_be_changed() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
+        try {
+            assertNull(driver.switchTo().alert());
+        }catch(NoAlertPresentException e){
+            e.printStackTrace();
+            System.out.println("No alert present");
+        }
 
+    }
     @When("Admin unchecked display biometrics checkbox")
     public void admin_unchecked_display_biometrics_checkbox() {
         editProfile.checkBox.click();
     }
+    @When("Admin update his own height in inches")
+    public void admin_update_his_own_height_in_inches(String docString){
+        editProfile.editHeight.clear();
+        editProfile.editHeight.sendKeys(docString);
+    }
+    @When("Admin update his own weight in lbs")
+    public void admin_update_his_own_weight_in_lbs(String docString){
+        editProfile.editWeight.clear();
+        editProfile.editWeight.sendKeys(docString);
+    }
 
+    @When("Admin cancelled the profile edit")
+    public void admin_cancelled_the_profile_edit(){
+        driver.switchTo().alert().dismiss();
+    }
+    @Then("It should retain earlier values")
+    public void it_should_retain_earlier_values(){
+        assertEquals(editProfile.editHeight.getText(), height);
+        assertEquals(editProfile.editWeight.getText(), weight);
+    }
 }

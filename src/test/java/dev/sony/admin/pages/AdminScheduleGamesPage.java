@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class AdminScheduleGamesPage {
     }
     @FindBy(id = "venueOptions")
     public List<WebElement> venueList;
-    @FindBy(name = "time")
+    @FindBy(xpath = "//input[@name = 'time']")
     public WebElement time;
     @FindBy(id = "seasonOptions")
     public List<WebElement> seasonOptions;

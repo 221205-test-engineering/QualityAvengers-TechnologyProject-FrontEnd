@@ -8,17 +8,12 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-//import org.testng.annotations.AfterClass;
-//import org.testng.annotations.BeforeClass;
 
-import java.time.Duration;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/java/dev/sony/admin/features/adminViews.feature", glue = "dev.sony.admin.steps")
+@CucumberOptions(features = "src/test/java/dev/sony/admin/features", glue = "dev.sony.admin.steps")
 public class AdminRunner {
 
         public static WebDriver driver;

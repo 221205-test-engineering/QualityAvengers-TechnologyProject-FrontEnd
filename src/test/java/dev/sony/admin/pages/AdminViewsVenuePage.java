@@ -13,7 +13,7 @@ public class AdminViewsVenuePage {
         this.driver = driver;
         PageFactory.initElements(driver,this);
     }
-    @FindBy(xpath= "//th[text() = 'Venue Name'")
+    @FindBy(xpath= "//th[text() = 'Venue Name']")
     public WebElement venueName;
     @FindBy(id = "venueTableBody")
     public List<WebElement> venueList;

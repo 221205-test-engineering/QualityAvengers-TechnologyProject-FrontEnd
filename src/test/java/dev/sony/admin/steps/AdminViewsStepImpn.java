@@ -8,8 +8,11 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,12 +29,13 @@ public class AdminViewsStepImpn {
     AdminViewsSeasonPage seasons = AdminRunner.seasons;
     AdminViewsVenuePage venues = AdminRunner.venues;
     @Given("User logged in as Admin")
-    public void user_logged_in_as_admin(){
+    public void user_logged_in_as_admin() throws InterruptedException {
         driver.get("http://127.0.0.1:5500/index.html");
         driver.findElement(By.xpath("//a[text() = 'Login']")).click();
         login.username.sendKeys("Mohan");
         login.password.sendKeys("Welcome2023");
         login.mainLogin.click();
+        Thread.sleep(2000);
     }
     @When("Admin clicks view games button")
     public void admin_clicks_view_games_button(){
@@ -54,6 +58,9 @@ public class AdminViewsStepImpn {
     }
     @When("Admin clicks show referees button")
     public void admin_clicks_show_referees_button(){
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions
+                        .visibilityOf(viewGames.referees));
         viewGames.referees.click();
     }
     @Then("Shows referees details")
@@ -80,8 +87,8 @@ public class AdminViewsStepImpn {
         viewGames.gameToAdminPage.click();
     }
     @Then("Admin is on the Admin page")
-    public void admin_is_on_admin_page(){
-
+    public void admin_is_on_admin_page() throws InterruptedException {
+        Thread.sleep(2000);
         assertEquals(admin.adminPage.getText(),"Admin Page");
     }
 
@@ -94,6 +101,8 @@ public class AdminViewsStepImpn {
     }
     @Then("Admin is on the view season page")
     public void admin_is_on_the_view_season_page() {
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.elementToBeClickable(seasons.seasonName));
        assertTrue(seasons.seasonName.getText().contains("Season Name"));
 
     }

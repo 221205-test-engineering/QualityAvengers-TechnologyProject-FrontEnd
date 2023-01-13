@@ -13,19 +13,19 @@ public class AdminPage {
     }
     @FindBy(xpath = "//h1[text() = 'Admin Page']")
     public WebElement adminPage;
-    @FindBy(xpath = "//a[text() = 'Edit User Profile']")
+    @FindBy(xpath  = "//a[contains(.,'Edit User Profile')]")
     public WebElement editUser;
-    @FindBy(xpath = "//a[text() = 'Games']")
+    @FindBy(linkText = "Games")
     public WebElement games;
-    @FindBy(xpath = "//a[text() = 'View Venues']")
+    @FindBy(xpath  = "//a[contains(.,'View Venues')]")
     public WebElement viewVenue;
-    @FindBy(xpath = "//a[text() = 'View Seasons']")
+    @FindBy(linkText = "View Seasons")
     public WebElement viewSeasons;
-    @FindBy(xpath = "//a[text() = 'Add Season']")
+    @FindBy(linkText = "Add Season")
     public WebElement addSeason;
-    @FindBy(xpath = "//a[text() = 'Manage User Roles']")
+    @FindBy(linkText = "Manage User Roles")
     public WebElement manageRoles;
-    @FindBy(xpath = "//a[text() = 'Schedule Game']")
+    @FindBy(linkText = "Schedule Game")
     public WebElement scheduleGame;
     @FindBy(xpath = "//button[text() = ''Logout]")
     public WebElement logout;
