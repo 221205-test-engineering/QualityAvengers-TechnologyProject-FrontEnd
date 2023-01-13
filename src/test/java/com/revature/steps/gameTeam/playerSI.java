@@ -148,14 +148,15 @@ public class playerSI {
 
         new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.alertIsPresent());
-        assertTrue(driver.switchTo().alert().getText().contains("successful"));
-    }
-
-    @When("the player click OK")
-    public void the_player_click_ok() {
-        // Write code here that turns the phrase above into concrete actions
+        assertTrue(driver.switchTo().alert().getText().contains("Successful"));
         driver.switchTo().alert().accept();
     }
+
+//    @When("the player click OK")
+//    public void the_player_click_ok() {
+//        // Write code here that turns the phrase above into concrete actions
+//        driver.switchTo().alert().accept();
+//    }
 
     @Then("the application status changes to pending")
     public void the_application_status_changes_to_pending() {

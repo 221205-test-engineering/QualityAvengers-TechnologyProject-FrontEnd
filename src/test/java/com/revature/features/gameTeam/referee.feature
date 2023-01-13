@@ -21,5 +21,6 @@ Feature: Referee functionalities
     Then a modal should appear with a scorecard
     When makes changes to the scorecard
     And clicks the save button
-    Then the scorecard for the game should be updated with the referee's changes
     Then an alert says the score has been updated successfully
+    Then the scorecard for the game should be updated with the referee's changes
+

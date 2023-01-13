@@ -67,6 +67,8 @@ public class refereeSI {
     @When("the referee clicks on the officiate games button")
     public void the_referee_clicks_on_the_officiate_games_button() {
         // Write code here that turns the phrase above into concrete actions
+        new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.visibilityOf(mainPage.officiateGamesLink));
         mainPage.officiateGamesLink.click();
     }
 
@@ -96,13 +98,21 @@ public class refereeSI {
     @When("makes changes to the scorecard")
     public void makes_changes_to_the_scorecard() {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        officiateGamePage.add1PtsHome.click();
     }
 
     @When("clicks the save button")
     public void clicks_the_save_button() {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        officiateGamePage.saveButton.click();
+    }
+
+    @Then("an alert says the score has been updated successfully")
+    public void an_alert_says_the_score_has_been_updated_successfully() {
+        // Write code here that turns the phrase above into concrete actions
+        new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.alertIsPresent());
+        driver.switchTo().alert().accept();
     }
 
     @Then("the scorecard for the game should be updated with the referee's changes")
@@ -111,9 +121,4 @@ public class refereeSI {
         throw new io.cucumber.java.PendingException();
     }
 
-    @Then("an alert says the score has been updated successfully")
-    public void an_alert_says_the_score_has_been_updated_successfully() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
 }

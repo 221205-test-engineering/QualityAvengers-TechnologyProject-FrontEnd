@@ -18,4 +18,10 @@ public class OfficiateGamePage {
 
     @FindBy(xpath = "//*[@id=\"playerLists\"]")
     public WebElement scoreCard;
+
+    @FindBy(xpath = "//*[@id=\"homeTeam\"]/dl[1]/dd[1]/button[1]") // needs to be changed HC
+    public WebElement add1PtsHome;
+
+    @FindBy(xpath = "//*[@id=\"playerLists\"]/button[2]")
+    public WebElement saveButton;
 }
