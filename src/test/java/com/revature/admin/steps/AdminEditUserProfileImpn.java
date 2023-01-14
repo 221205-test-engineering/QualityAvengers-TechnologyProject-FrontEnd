@@ -99,7 +99,7 @@ public class AdminEditUserProfileImpn {
         driver.switchTo().alert().dismiss();
     }
     @Then("It should clear edited values")
-    public void it_should_clear_edited_values() throws InterruptedException {
+    public void it_should_clear_edited_values(){
         assertEquals(editProfile.editHeight.getText(), "");
         assertEquals(editProfile.editWeight.getText(), "");
     }

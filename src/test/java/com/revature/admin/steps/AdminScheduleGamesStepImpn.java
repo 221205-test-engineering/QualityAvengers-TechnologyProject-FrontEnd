@@ -30,59 +30,60 @@ public class AdminScheduleGamesStepImpn {
     // Time and Location
     @When("Admin select one of the venues options")
     public void admin_select_one_of_the_venues_options(){
-        new FluentWait<WebDriver>(driver)
+        new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(NullPointerException.class)
                 .until(ExpectedConditions
                         .visibilityOfAllElements(scheduleGames.venueList));
-        scheduleGames.venueList.get(0);
+        scheduleGames.venueList.get(0).click();
     }
     @When("Admin inputs a date to the date box")
     public void admin_inputs_a_date_to_the_input_box(){
         scheduleGames.time.sendKeys("01122023");
         scheduleGames.time.sendKeys(Keys.TAB);
-        scheduleGames.time.sendKeys("0335");
+        scheduleGames.time.sendKeys("0335PM");
+
     }
     @When("Admin select one of the season from the options")
     public void admin_clicks_list_of_season(){
-        new FluentWait<WebDriver>(driver)
+        new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(NullPointerException.class)
                 .until(ExpectedConditions
                         .visibilityOfAllElements(scheduleGames.seasonOptions));
-        scheduleGames.seasonOptions.get(0);
+        scheduleGames.seasonOptions.get(0).click();
     }
     @When("Admin select one of the sports from the options")
     public void admin_select_one_of_the_sports_from_the_options(){
-        new FluentWait<WebDriver>(driver)
+        new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(NullPointerException.class)
                 .until(ExpectedConditions
                         .visibilityOfAllElements(scheduleGames.sportList));
-        scheduleGames.sportList.get(0);
+        scheduleGames.sportList.get(0).click();
     }
     @When("Admin select one from the list of home teams")
     public void admin_select_one_from_the_list_of_home_teams(){
-        new FluentWait<WebDriver>(driver)
+        new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(NullPointerException.class)
                 .until(ExpectedConditions
                 .visibilityOfAllElements(scheduleGames.homeTeamList));
-        scheduleGames.homeTeamList.get(0);
+        scheduleGames.homeTeamList.get(0).click();
     }
     @When("Admin select one from the list of away team")
     public void admin_select_one_from_the_list_of_away_team(){
-        new FluentWait<WebDriver>(driver)
+        new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(NullPointerException.class)
                 .until(ExpectedConditions
                 .visibilityOfAllElements(scheduleGames.awayTeamList));
-        scheduleGames.awayTeamList.get(0);
+        scheduleGames.awayTeamList.get(0).click();
     }
     @When("Admin clicks schedule button")
     public void admin_clicks_schedule_button(){

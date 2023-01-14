@@ -34,12 +34,14 @@ public class AdminAddSeasonStepImpn {
         addSeason.addNewSeason.sendKeys(docString);
     }
     @When("Admin clicks add season submit button")
-    public void admin_clicds_add_season_submit_button(){
+    public void admin_clicks_add_season_submit_button(){
         addSeason.newSeasonSubmit.click();
     }
     @Then("New scheduled season should appear at the end of list of seasons")
-    public void new_scheduled_season_appears_at_the_end(){
-       addSeason.listOfSeasons.get(addSeason.listOfSeasons.size()-1).getText();
+    public void new_scheduled_season_appears_at_the_end() {
+
+            System.out.println(addSeason.listOfSeasons.get(addSeason.listOfSeasons.size() - 1).getText());
+
     }
     @When("Admin clicks add season back button")
     public void admin_clicks_add_season_back_button(){

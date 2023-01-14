@@ -8,7 +8,7 @@ Feature: Create a season
     Then Admin should be able to see current seasons
     When Admin inputs a new season
     """
-    Summer 2023 Regular Season Football
+    Summer 2023 Special Season Baseball
     """
     When Admin clicks add season submit button
     Then New scheduled season should appear at the end of list of seasons

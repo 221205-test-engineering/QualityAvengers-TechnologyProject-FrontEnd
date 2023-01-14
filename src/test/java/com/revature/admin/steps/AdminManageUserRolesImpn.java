@@ -69,7 +69,7 @@ public class AdminManageUserRolesImpn {
     }
 
     @When("Admin clicks Promote To Admin button")
-    public void admin_clicks_promote_to_admin_button() throws InterruptedException {
+    public void admin_clicks_promote_to_admin_button() {
         userRoles.changeRole1.click();
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOf(userRoles.changeRole2));

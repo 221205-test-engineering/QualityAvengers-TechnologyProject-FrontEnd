@@ -12,7 +12,7 @@ Feature: Edit user profile
     When Admin change his own weight in lbs
     When Admin inputs url of his profile picture
             """
-            https://pixabay.com/illustrations/car-yellow-png-967387?size=150x150&set=set1
+            https://pixabay.com/illustrations/car-yellow-png-967387
             """
 
     When Admin checks checkbox
