@@ -17,9 +17,6 @@ public class TeamApplicationPage
     @FindBy(xpath = "//*[@id=\"teamInfo\"]/tr[1]/td[5]/button")
     public WebElement seeCaptainButton;
 
-    @FindBy(xpath = "/html/body/div/select")
-    public WebElement selectTeam;
-
     @FindBy(xpath = "/html/body/div/button")
     public WebElement applyButton;
 
@@ -34,5 +31,11 @@ public class TeamApplicationPage
 
     @FindBy(xpath = "//*[@id=\"teamInfo\"]/tr/td[4]")
     public  WebElement applicationStatus;
+
+    @FindBy(xpath = "/html/body/div/select")
+    public WebElement selectTeam;
+
+    @FindBy(xpath = "/html/body/div/p")
+    public WebElement alreadyInTeam;
 
 }

@@ -29,6 +29,6 @@ public class TeamRequestPage
     @FindBy(xpath = "//body/section")
     public WebElement playerInfoSection;
 
-    @FindBy(xpath = "//*[@id=\"teamRequests\"]/tr[last()]/td[3]")
+    @FindBy(xpath = "//*[@id=\"teamRequests\"]/tr/td[3]")
     public WebElement requestStatus;
 }

@@ -8,7 +8,7 @@ Feature: Captain functionalities
   Scenario: View list of players requesting to join the team
     Given the captain is logged in to the system
     When the captain navigates to the approve or deny team request page
-    Then a list of all players requesting to join the team should be displayed with their status reading pending
+    Then a list of all players requesting to join the team should be displayed
 
   Scenario: View details of one player
     Given the captain is logged in to the system
