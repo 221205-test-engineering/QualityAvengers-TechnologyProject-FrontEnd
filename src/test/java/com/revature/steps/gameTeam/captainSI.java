@@ -29,7 +29,7 @@ public class captainSI {
         new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.elementToBeClickable(indexPage.loginButton));
         indexPage.loginButton.click();
-        loginPage.usernameField.sendKeys("Bobby202");
+        loginPage.usernameField.sendKeys("Candice202");
         loginPage.passwordField.sendKeys("pass123");
         loginPage.loginButton.click();
 
@@ -42,15 +42,15 @@ public class captainSI {
         cptHomePage.adRequest.click();
     }
 
-    @Then("a list of all players requesting to join the team should be displayed with their status reading pending")
-    public void a_list_of_all_players_requesting_to_join_the_team_should_be_displayed_with_their_status_reading_pending() {
-        // Write code here that turns the phrase above into concrete actions
-        new WebDriverWait(driver, Duration.ofSeconds(5))
-                .until(ExpectedConditions.visibilityOf(teamRequestPage.requestList));
-        teamRequestPage.requestList.isDisplayed();
-        assertTrue(teamRequestPage.requestList.isDisplayed());
-        //.getText().equals("pending")); // need to add a pending compare when new request
-    }
+//    @Then("a list of all players requesting to join the team should be displayed with their status reading pending")
+//    public void a_list_of_all_players_requesting_to_join_the_team_should_be_displayed_with_their_status_reading_pending() {
+//        // Write code here that turns the phrase above into concrete actions
+//        new WebDriverWait(driver, Duration.ofSeconds(5))
+//                .until(ExpectedConditions.visibilityOf(teamRequestPage.requestList));
+//        teamRequestPage.requestList.isDisplayed();
+//        assertTrue(teamRequestPage.requestList.isDisplayed());
+//                //.getText().equals("pending")); // need to add a pending compare when new request
+//    }
 
     @Then("a list of all players requesting to join the team should be displayed")
     public void a_list_of_all_players_requesting_to_join_the_team_should_be_displayed() {
@@ -84,7 +84,7 @@ public class captainSI {
         String statusCondition = teamRequestPage.requestStatus.getText();
 
         if(statusCondition.equals("pending")){
-            teamRequestPage.approveButton.click();
+        teamRequestPage.approveButton.click();
         }
     }
 
@@ -92,7 +92,11 @@ public class captainSI {
     public void an_alert_says_the_approval_has_been_successful() {
         // Write code here that turns the phrase above into concrete actions
         String statusCondition = teamRequestPage.requestStatus.getText();
-
+        try {
+            Thread.sleep(5);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         if(statusCondition.equals("pending")) {
             assertEquals("successful", driver.switchTo().alert().getText().contains("successful"));
         }

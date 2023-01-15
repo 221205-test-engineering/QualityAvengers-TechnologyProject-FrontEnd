@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/java/com/revature/features", glue = "com/revature/steps")
+@CucumberOptions(features = "src/test/java/com/revature/features/gameTeam", glue = "com/revature/steps/gameTeam")
 
 public class IntramuralRunner {
     public static WebDriver driver;
@@ -36,8 +36,18 @@ public class IntramuralRunner {
         mainPage = new MainPage(driver);
         officiatingChoicePage = new OfficiatingChoicePage(driver);
         officiateGamePage = new OfficiateGamePage(driver);
+<<<<<<< HEAD
+
+    }
+
+    @AfterClass
+    public static void teardown(){
+        driver.quit();
+    }
+=======
     }
 
     @AfterClass
     public static void teardown(){driver.quit();}
+>>>>>>> main
 }

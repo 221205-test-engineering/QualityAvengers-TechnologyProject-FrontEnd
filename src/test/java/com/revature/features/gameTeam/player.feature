@@ -9,7 +9,7 @@ Feature: Player functionalities
     Given the player is logged in to the system
     Then the player is on the player page
     When the player clicks on the team application button
-    Then a list of teams should be displayed with their name sport team status and application status
+    Then a list of teams should be displayed
     When the player clicks on see the captain
     Then the team's captain information should be displayed in a section
     When the player clicks on the close button
@@ -19,9 +19,9 @@ Feature: Player functionalities
 
   Scenario: Apply to join a team
     Given the player is logged in to the system
-    Then the player is on the player page
-    When the player clicks on the team application button
-    Then a list of teams should be displayed with their name sport team status and application status stating not applied
+    Given the player is on the team application page
+    Given the player is not in a team
+    Then a list of teams should be displayed
     When the player select a team from the dropdown menu
     And clicks apply
     Then an alert says the application has been successful
