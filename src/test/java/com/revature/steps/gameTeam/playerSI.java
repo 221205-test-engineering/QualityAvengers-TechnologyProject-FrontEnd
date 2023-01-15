@@ -9,6 +9,10 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -55,6 +59,7 @@ public class playerSI {
         String notInTeam = teamApplicationPage.applicationStatus.getText();
         assertEquals("not applied", notInTeam);
     }
+
 
     @Then("the player is on the player page")
     public void the_player_is_on_the_player_page() {
@@ -139,6 +144,7 @@ public class playerSI {
     @When("the player select a team from the dropdown menu")
     public void the_player_select_a_team_from_the_dropdown_menu() {
         // Write code here that turns the phrase above into concrete actions
+
 //        new WebDriverWait(driver, Duration.ofSeconds(10))
 //                .until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("/html/body/div"))));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
@@ -157,6 +163,7 @@ public class playerSI {
 //
 //        } else {System.out.println(teamApplicationPage.alreadyInTeam.getText());}
 
+
     }
 
     @When("clicks apply")
@@ -168,12 +175,12 @@ public class playerSI {
             System.out.println("Element not found");
             e.printStackTrace();
         }
-
     }
 
     @Then("an alert says the application has been successful")
     public void an_alert_says_the_application_has_been_successful() {
         // Write code here that turns the phrase above into concrete actions
+
 
         try {
             new WebDriverWait(driver, Duration.ofSeconds(5))
@@ -181,6 +188,7 @@ public class playerSI {
             assertTrue(driver.switchTo().alert().getText().contains("Successful"));
             driver.switchTo().alert().accept();
         } catch (NoAlertPresentException e){e.printStackTrace();}
+
     }
 
     @Then("the application status changes to pending")
@@ -189,3 +197,4 @@ public class playerSI {
         assertTrue(teamApplicationPage.applicationStatus.getText().equals("pending"));
     }
 }
+

@@ -92,13 +92,11 @@ public class captainSI {
     public void an_alert_says_the_approval_has_been_successful() {
         // Write code here that turns the phrase above into concrete actions
         String statusCondition = teamRequestPage.requestStatus.getText();
-
         try {
             Thread.sleep(5);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-
         if(statusCondition.equals("pending")) {
             assertEquals("successful", driver.switchTo().alert().getText().contains("successful"));
         }
