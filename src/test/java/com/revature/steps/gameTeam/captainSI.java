@@ -19,7 +19,7 @@ public class captainSI {
     public WebDriver driver = IntramuralRunner.driver;
     public IndexPage indexPage = IntramuralRunner.indexPage;
     public LoginPage loginPage = IntramuralRunner.loginPage;
-    public CptHomePage cptHomePage = IntramuralRunner.cptHomePage;
+    public MainPage mainPage = IntramuralRunner.mainPage;
     public TeamRequestPage teamRequestPage = IntramuralRunner.teamRequestPage;
 
     @Given("the captain is logged in to the system")
@@ -38,8 +38,8 @@ public class captainSI {
     public void the_captain_navigates_to_the_approve_or_deny_team_request_page() {
         // Write code here that turns the phrase above into concrete actions
         new WebDriverWait(driver, Duration.ofSeconds(5))
-                .until(ExpectedConditions.elementToBeClickable(cptHomePage.adRequest));
-        cptHomePage.adRequest.click();
+                .until(ExpectedConditions.elementToBeClickable(mainPage.teamApplicationLink));
+        mainPage.teamApplicationLink.click();
     }
 
 //    @Then("a list of all players requesting to join the team should be displayed with their status reading pending")
