@@ -38,8 +38,8 @@ public class captainSI {
     public void the_captain_navigates_to_the_approve_or_deny_team_request_page() {
         // Write code here that turns the phrase above into concrete actions
         new WebDriverWait(driver, Duration.ofSeconds(5))
-                .until(ExpectedConditions.elementToBeClickable(mainPage.teamApplicationLink));
-        mainPage.teamApplicationLink.click();
+                .until(ExpectedConditions.elementToBeClickable(mainPage.teamRequestLink));
+        mainPage.teamRequestLink.click();
     }
 
 //    @Then("a list of all players requesting to join the team should be displayed with their status reading pending")
