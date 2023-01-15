@@ -17,7 +17,6 @@ public class IntramuralRunner {
     public static WebDriver driver;
     public static IndexPage indexPage;
     public static LoginPage loginPage;
-    public static CptHomePage cptHomePage;
     public static TeamApplicationPage teamApplicationPage;
     public static TeamRequestPage teamRequestPage;
     public static MainPage mainPage;
@@ -30,7 +29,6 @@ public class IntramuralRunner {
         driver = new ChromeDriver();
         indexPage = new IndexPage(driver);
         loginPage = new LoginPage(driver);
-        cptHomePage = new CptHomePage(driver);
         teamApplicationPage = new TeamApplicationPage(driver);
         teamRequestPage = new TeamRequestPage(driver);
         mainPage = new MainPage(driver);
