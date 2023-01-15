@@ -36,7 +36,6 @@ public class IntramuralRunner {
         mainPage = new MainPage(driver);
         officiatingChoicePage = new OfficiatingChoicePage(driver);
         officiateGamePage = new OfficiateGamePage(driver);
-<<<<<<< HEAD
 
     }
 
@@ -44,10 +43,4 @@ public class IntramuralRunner {
     public static void teardown(){
         driver.quit();
     }
-=======
-    }
-
-    @AfterClass
-    public static void teardown(){driver.quit();}
->>>>>>> main
 }
