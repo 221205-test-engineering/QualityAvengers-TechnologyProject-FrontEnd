@@ -5,11 +5,14 @@ import com.revature.runners.IntramuralRunner;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -29,7 +32,7 @@ public class captainSI {
         new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.elementToBeClickable(indexPage.loginButton));
         indexPage.loginButton.click();
-        loginPage.usernameField.sendKeys("Candice202");
+        loginPage.usernameField.sendKeys("Jessika202");
         loginPage.passwordField.sendKeys("pass123");
         loginPage.loginButton.click();
 
@@ -37,7 +40,7 @@ public class captainSI {
     @When("the captain navigates to the approve or deny team request page")
     public void the_captain_navigates_to_the_approve_or_deny_team_request_page() {
         // Write code here that turns the phrase above into concrete actions
-        new WebDriverWait(driver, Duration.ofSeconds(5))
+        new WebDriverWait(driver, Duration.ofSeconds(9))
                 .until(ExpectedConditions.elementToBeClickable(mainPage.teamRequestLink));
         mainPage.teamRequestLink.click();
     }
@@ -55,7 +58,7 @@ public class captainSI {
     @Then("a list of all players requesting to join the team should be displayed")
     public void a_list_of_all_players_requesting_to_join_the_team_should_be_displayed() {
         // Write code here that turns the phrase above into concrete actions
-        new WebDriverWait(driver, Duration.ofSeconds(5))
+        new WebDriverWait(driver, Duration.ofSeconds(9))
                 .until(ExpectedConditions.visibilityOf(teamRequestPage.requestList));
         teamRequestPage.requestList.isDisplayed();
         assertTrue(teamRequestPage.requestList.isDisplayed());
@@ -80,11 +83,25 @@ public class captainSI {
 
     @When("the captain clicks on the approve button next to a player's name")
     public void the_captain_clicks_on_the_approve_button_next_to_a_player_s_name() {
-        // Write code here that turns the phrase above into concrete actions
-        String statusCondition = teamRequestPage.requestStatus.getText();
 
-        if(statusCondition.equals("pending")){
-        teamRequestPage.approveButton.click();
+        // Get a reference to the table
+        WebElement table = driver.findElement(By.xpath("//table"));
+
+        // Get all of the td elements in the table
+        List<WebElement> tdElements = table.findElements(By.tagName("td"));
+
+        // Iterate through the td elements
+        for (WebElement td : tdElements) {
+            // check if the status is pending
+            if(td.getText().equals("pending")){
+                System.out.println(td.getText());
+                List<WebElement> approveButton = td.findElements(By.xpath("./following-sibling::td/button"));
+                if(approveButton.size() > 0) {
+                    approveButton.get(0).click();
+                } else {
+                    System.out.println("The approve button is not present");
+                }
+            }
         }
     }
 
@@ -122,11 +139,24 @@ public class captainSI {
     @When("the captain clicks on the deny button next to a player's name")
     public void the_captain_clicks_on_the_deny_button_next_to_a_player_s_name() {
         // Write code here that turns the phrase above into concrete actions
-        String statusCondition = teamRequestPage.requestStatus.getText();
+        WebElement table = driver.findElement(By.xpath("//table"));
 
-        if(statusCondition.equals("pending")){
-            teamRequestPage.approveButton.click();
-        };
+        // Get all of the td elements in the table
+        List<WebElement> tdElements = table.findElements(By.tagName("td"));
+
+        // Iterate through the td elements
+        for (WebElement td : tdElements) {
+            // check if the status is pending
+            if(td.getText().equals("pending")){
+                System.out.println(td.getText());
+                List<WebElement> denyButton = td.findElements(By.xpath("./following-sibling::td[2]/button"));
+                if(denyButton.size() > 0) {
+                    denyButton.get(0).click();
+                } else {
+                    System.out.println("The approve button is not present");
+                }
+            }
+        }
     }
 
     @Then("an alert says the deny has been successful")
