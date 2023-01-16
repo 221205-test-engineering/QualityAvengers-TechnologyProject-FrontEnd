@@ -5,12 +5,16 @@ import com.revature.admin.runner.AdminRunner;
 import com.revature.admin.pages.AdminScheduleGamesPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -30,13 +34,10 @@ public class AdminScheduleGamesStepImpn {
     // Time and Location
     @When("Admin select one of the venues options")
     public void admin_select_one_of_the_venues_options(){
-        new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(10))
-                .pollingEvery(Duration.ofSeconds(2))
-                .ignoring(NullPointerException.class)
+        new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions
-                        .visibilityOfAllElements(scheduleGames.venueList));
-        scheduleGames.venueList.get(0).click();
+                .visibilityOfAllElements(scheduleGames.venueList));
+        scheduleGames.venueList.get(0);
     }
     @When("Admin inputs a date to the date box")
     public void admin_inputs_a_date_to_the_input_box(){
@@ -46,44 +47,44 @@ public class AdminScheduleGamesStepImpn {
 
     }
     @When("Admin select one of the season from the options")
-    public void admin_clicks_list_of_season(){
-        new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(10))
-                .pollingEvery(Duration.ofSeconds(2))
-                .ignoring(NullPointerException.class)
-                .until(ExpectedConditions
-                        .visibilityOfAllElements(scheduleGames.seasonOptions));
-        scheduleGames.seasonOptions.get(0).click();
+    public void admin_clicks_list_of_season() throws InterruptedException {
+        Thread.sleep(2000);
+        Select season = new Select(scheduleGames.seasonOptions);
+        season.selectByIndex(0);
     }
     @When("Admin select one of the sports from the options")
-    public void admin_select_one_of_the_sports_from_the_options(){
-        new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(10))
-                .pollingEvery(Duration.ofSeconds(2))
-                .ignoring(NullPointerException.class)
-                .until(ExpectedConditions
-                        .visibilityOfAllElements(scheduleGames.sportList));
-        scheduleGames.sportList.get(0).click();
+    public void admin_select_one_of_the_sports_from_the_options() throws InterruptedException {
+        Select sport = new Select(scheduleGames.sportList);
+        sport.selectByIndex(1);
+        Thread.sleep(5000);
     }
     @When("Admin select one from the list of home teams")
     public void admin_select_one_from_the_list_of_home_teams(){
-        new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(10))
-                .pollingEvery(Duration.ofSeconds(2))
-                .ignoring(NullPointerException.class)
-                .until(ExpectedConditions
-                .visibilityOfAllElements(scheduleGames.homeTeamList));
-        scheduleGames.homeTeamList.get(0).click();
+
+        Actions doubleClickAction = new Actions(driver);
+        List<WebElement> list = scheduleGames.homeTeamList.findElements(By.tagName("option"));
+
+        for(WebElement option : list){
+            if(option.getText().equals("The Ballers")){
+                scheduleGames.homeTeamList.click();
+                doubleClickAction.moveToElement(option).doubleClick().build().perform();
+                break;
+            }
+        }
     }
     @When("Admin select one from the list of away team")
     public void admin_select_one_from_the_list_of_away_team(){
-        new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(10))
-                .pollingEvery(Duration.ofSeconds(2))
-                .ignoring(NullPointerException.class)
-                .until(ExpectedConditions
-                .visibilityOfAllElements(scheduleGames.awayTeamList));
-        scheduleGames.awayTeamList.get(0).click();
+        Actions doubleClickAction = new Actions(driver);
+        List<WebElement> list = scheduleGames.awayTeamList.findElements(By.tagName("option"));
+
+        for(WebElement option : list){
+            if(option.getText().equals("The Splash")){
+                scheduleGames.awayTeamList.click();
+                doubleClickAction.moveToElement(option).doubleClick().build().perform();
+                break;
+            }
+        }
+
     }
     @When("Admin clicks schedule button")
     public void admin_clicks_schedule_button(){

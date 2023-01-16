@@ -40,6 +40,8 @@ public class AdminViewsStepImpn {
     }
     @When("Admin clicks view games button")
     public void admin_clicks_view_games_button(){
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.elementToBeClickable(admin.games));
         admin.games.click();
     }
     @Then("Admin is on the view games page")
@@ -48,7 +50,8 @@ public class AdminViewsStepImpn {
         assertTrue(viewGames.gameHeaderList.toString().length()>0);
     }
     @Then("Admin should see all the games scheduled")
-    public void admin_should_see_all_the_games_scheduled(){
+    public void admin_should_see_all_the_games_scheduled() throws InterruptedException {
+        Thread.sleep(2000);
         List<String> viewgame = new ArrayList<>();
         for(WebElement games:viewGames.gamesList){
             viewgame.add(games.getText());
@@ -65,8 +68,8 @@ public class AdminViewsStepImpn {
         viewGames.referees.click();
     }
     @Then("Shows referees details")
-    public void shows_referees_details(){
-
+    public void shows_referees_details() throws InterruptedException {
+        Thread.sleep(2000);
         List<String> referee = new ArrayList<>();
         for(WebElement details: viewGames.refereeDetails){
             referee.add(details.getText());
@@ -127,6 +130,8 @@ public class AdminViewsStepImpn {
 
     @When("Admin clicks view venues button")
     public void admin_clicks_view_venues_button() {
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.elementToBeClickable(admin.viewVenue));
         admin.viewVenue.click();
     }
     @Then("Admin is on the view venue page")

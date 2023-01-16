@@ -18,14 +18,14 @@ public class AdminScheduleGamesPage {
     public List<WebElement> venueList;
     @FindBy(xpath = "//input[@name = 'time']")
     public WebElement time;
-    @FindBy(id = "seasonOptions")
-    public List<WebElement> seasonOptions;
+    @FindBy(name = "season")
+    public WebElement seasonOptions;
     @FindBy(name = "sport")
-    public List<WebElement> sportList;
+    public WebElement sportList;
     @FindBy(id = "homeOptions")
-    public List<WebElement> homeTeamList;
+    public WebElement homeTeamList;
     @FindBy(id = "awayOptions")
-    public List<WebElement> awayTeamList;
+    public WebElement awayTeamList;
     @FindBy(xpath = "//button[text() = 'Schedule']")
     public WebElement schedule;
     @FindBy(xpath = "//a[text() = 'Back']")

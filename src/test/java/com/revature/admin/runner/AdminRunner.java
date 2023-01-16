@@ -19,6 +19,7 @@ public class AdminRunner {
 
         public static WebDriver driver;
         public static LoginPage login;
+
         public static AdminPage admin;
         public static AdminViewsGamePage viewGames;
         public static AdminViewsVenuePage venues;
