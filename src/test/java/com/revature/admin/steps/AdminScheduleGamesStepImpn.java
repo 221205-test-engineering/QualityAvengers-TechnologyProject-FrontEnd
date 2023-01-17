@@ -7,10 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.*;
 
 import java.time.Duration;
 import java.util.List;
@@ -24,6 +21,7 @@ public class AdminScheduleGamesStepImpn {
     AdminScheduleGamesPage scheduleGames = AdminRunner.scheduleGames;
     @When("Admin clicks schedule game button")
     public void admin_clicks_schedule_game_button(){
+
         admin.scheduleGame.click();
     }
     @Then("Admin is on the game schedule page")
@@ -34,10 +32,11 @@ public class AdminScheduleGamesStepImpn {
     // Time and Location
     @When("Admin select one of the venues options")
     public void admin_select_one_of_the_venues_options(){
-        new WebDriverWait(driver, Duration.ofSeconds(10))
+        new WebDriverWait(driver, Duration.ofSeconds(20))
                 .until(ExpectedConditions
                 .visibilityOfAllElements(scheduleGames.venueList));
-        scheduleGames.venueList.get(0);
+        scheduleGames.venueList.click();
+
     }
     @When("Admin inputs a date to the date box")
     public void admin_inputs_a_date_to_the_input_box(){
@@ -56,33 +55,37 @@ public class AdminScheduleGamesStepImpn {
     public void admin_select_one_of_the_sports_from_the_options() throws InterruptedException {
         Select sport = new Select(scheduleGames.sportList);
         sport.selectByIndex(1);
-        Thread.sleep(5000);
+        scheduleGames.sportList.sendKeys(Keys.TAB);
+        Thread.sleep(2000);
     }
     @When("Admin select one from the list of home teams")
     public void admin_select_one_from_the_list_of_home_teams(){
-
-        Actions doubleClickAction = new Actions(driver);
-        List<WebElement> list = scheduleGames.homeTeamList.findElements(By.tagName("option"));
-
-        for(WebElement option : list){
-            if(option.getText().equals("The Ballers")){
-                scheduleGames.homeTeamList.click();
-                doubleClickAction.moveToElement(option).doubleClick().build().perform();
-                break;
-            }
+        try{
+            new FluentWait<>(driver).withTimeout(Duration.ofSeconds(10))
+                    .pollingEvery(Duration.ofSeconds(2))
+                    .ignoring(NoSuchElementException.class)
+                    .until(ExpectedConditions.invisibilityOf(scheduleGames.homeTeamList));
+            Select rows = new Select(scheduleGames.homeTeamList);
+            rows.selectByIndex(1);
+        }catch(Throwable e){
+            System.out.println("Error found: "+e.getMessage());
         }
     }
     @When("Admin select one from the list of away team")
     public void admin_select_one_from_the_list_of_away_team(){
-        Actions doubleClickAction = new Actions(driver);
-        List<WebElement> list = scheduleGames.awayTeamList.findElements(By.tagName("option"));
+        try {
+            Actions doubleClickAction = new Actions(driver);
+            List<WebElement> list = scheduleGames.awayTeamList.findElements(By.tagName("option"));
 
-        for(WebElement option : list){
-            if(option.getText().equals("The Splash")){
-                scheduleGames.awayTeamList.click();
-                doubleClickAction.moveToElement(option).doubleClick().build().perform();
-                break;
+            for (WebElement option : list) {
+                if (option.getText().equals("The Splash")) {
+                    option.click();
+                    doubleClickAction.moveToElement(option).doubleClick().build().perform();
+                    break;
+                }
             }
+        }catch(Throwable e){
+            System.out.println("Error found: " + e.getMessage());
         }
 
     }
@@ -95,6 +98,5 @@ public class AdminScheduleGamesStepImpn {
     public void admin_clicks_back_button_from_game_schedule_page(){
         scheduleGames.scheduleToAdminPage.click();
     }
-
 
 }

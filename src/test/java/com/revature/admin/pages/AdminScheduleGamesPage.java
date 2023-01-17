@@ -14,15 +14,15 @@ public class AdminScheduleGamesPage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    @FindBy(id = "venueOptions")
-    public List<WebElement> venueList;
+    @FindBy(xpath = "//*[@id=\"venueOptions\"]/option[2]")
+    public WebElement venueList;
     @FindBy(xpath = "//input[@name = 'time']")
     public WebElement time;
     @FindBy(name = "season")
     public WebElement seasonOptions;
     @FindBy(name = "sport")
     public WebElement sportList;
-    @FindBy(id = "homeOptions")
+    @FindBy(xpath = "//*[@id=\"homeOptions\"]")
     public WebElement homeTeamList;
     @FindBy(id = "awayOptions")
     public WebElement awayTeamList;
