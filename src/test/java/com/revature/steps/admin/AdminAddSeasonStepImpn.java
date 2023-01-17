@@ -1,8 +1,8 @@
-package com.revature.admin.steps;
+package com.revature.steps.admin;
 
-import com.revature.admin.runner.AdminRunner;
-import com.revature.admin.pages.AddSeasonPage;
-import com.revature.admin.pages.AdminPage;
+import com.revature.runners.AdminRunner;
+import com.revature.pages.AdminAddSeasonPage;
+import com.revature.pages.AdminPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +13,7 @@ public class AdminAddSeasonStepImpn {
     public WebDriver driver = AdminRunner.driver;
 
     public AdminPage admin = AdminRunner.admin;
-    public AddSeasonPage addSeason = AdminRunner.addSeason;
+    public AdminAddSeasonPage addSeason = AdminRunner.addSeason;
 
     @When("Admin clicks add season button")
     public void admin_clicks_add_season_button(){

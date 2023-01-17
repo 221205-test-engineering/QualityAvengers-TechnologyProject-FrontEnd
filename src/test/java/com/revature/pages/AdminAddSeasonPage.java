@@ -1,4 +1,4 @@
-package com.revature.admin.pages;
+package com.revature.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,9 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class AddSeasonPage {
+public class AdminAddSeasonPage {
     public WebDriver driver;
-    public AddSeasonPage(WebDriver driver){
+    public AdminAddSeasonPage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
