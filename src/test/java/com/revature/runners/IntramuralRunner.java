@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/java/com/revature/features/gameTeam/player.feature", glue = "com/revature/steps/gameTeam")
+@CucumberOptions(features = "src/test/java/com/revature/features/gameTeam", glue = "com/revature/steps/gameTeam")
 
 public class IntramuralRunner {
     public static WebDriver driver;
