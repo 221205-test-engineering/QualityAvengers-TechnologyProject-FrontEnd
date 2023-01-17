@@ -15,7 +15,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/java/com/revature/admin/features", glue = "com.revature.admin.steps")
+@CucumberOptions(features = "src/test/java/com/revature/features/admin", glue = "com.revature.steps.admin")
 public class AdminRunner {
 
         public static WebDriver driver;

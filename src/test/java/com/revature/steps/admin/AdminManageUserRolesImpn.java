@@ -1,8 +1,8 @@
-package com.revature.admin.steps;
+package com.revature.steps.admin;
 
-import com.revature.admin.pages.AdminPage;
-import com.revature.admin.pages.ManageUserRolePage;
-import com.revature.admin.runner.AdminRunner;
+import com.revature.pages.AdminPage;
+import com.revature.pages.ManageUserRolePage;
+import com.revature.runners.AdminRunner;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.NoAlertPresentException;

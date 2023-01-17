@@ -1,8 +1,8 @@
-package com.revature.admin.steps;
+package com.revature.steps.admin;
 
 
-import com.revature.admin.pages.*;
-import com.revature.admin.runner.AdminRunner;
+import com.revature.pages.*;
+import com.revature.runners.AdminRunner;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class AdminViewsStepImpn {
     public static WebDriver driver = AdminRunner.driver;
 
-    LoginPage login = AdminRunner.login;
+    AdminLoginPage login = AdminRunner.login;
 
     AdminPage admin = AdminRunner.admin;
     AdminViewsGamePage viewGames = AdminRunner.viewGames;

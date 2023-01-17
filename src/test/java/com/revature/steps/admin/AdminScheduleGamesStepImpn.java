@@ -1,8 +1,8 @@
-package com.revature.admin.steps;
+package com.revature.steps.admin;
 
-import com.revature.admin.pages.AdminPage;
-import com.revature.admin.runner.AdminRunner;
-import com.revature.admin.pages.AdminScheduleGamesPage;
+import com.revature.pages.AdminPage;
+import com.revature.runners.AdminRunner;
+import com.revature.pages.AdminScheduleGamesPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.*;
