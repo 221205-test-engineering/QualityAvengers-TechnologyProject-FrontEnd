@@ -142,7 +142,9 @@ public class captainSI {
         String statusCondition = teamRequestPage.requestStatus.getText();
 
         if(statusCondition.equals("pending")) {
-            driver.switchTo().alert().accept();
+            try{
+                driver.switchTo().alert().accept();
+            } catch (NoAlertPresentException e){e.printStackTrace();}
         }
     }
 
