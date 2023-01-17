@@ -39,8 +39,8 @@ public class playerSI {
         new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.elementToBeClickable(indexPage.loginButton));
         indexPage.loginButton.click();
-        loginPage.usernameField.sendKeys("acolcloughg");
-        loginPage.passwordField.sendKeys("jxvh2PvoO5y");
+        loginPage.usernameField.sendKeys("slafoy1");
+        loginPage.passwordField.sendKeys("3hOS1nh");
         loginPage.loginButton.click();
     }
 
@@ -195,6 +195,11 @@ public class playerSI {
     @Then("the application status changes to pending")
     public void the_application_status_changes_to_pending() {
         // Write code here that turns the phrase above into concrete actions
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         assertTrue(teamApplicationPage.applicationStatus.getText().equals("pending"));
     }
 }
