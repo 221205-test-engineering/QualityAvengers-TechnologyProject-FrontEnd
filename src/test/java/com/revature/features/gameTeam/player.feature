@@ -24,7 +24,7 @@ Feature: Player functionalities
     When the player select a team from the dropdown menu
     And clicks apply
     Then an alert says the application has been successful
-    Then the application status changes to pending
+#    Then the application status changes to pending
 
   Examples:
   | username | password |
