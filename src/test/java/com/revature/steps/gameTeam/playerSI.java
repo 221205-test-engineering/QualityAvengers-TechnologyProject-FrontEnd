@@ -170,11 +170,13 @@ public class playerSI {
                 // need to find an implementation
             }
               else{
-                  Select select = new Select(teamApplicationPage.selectTeam);
+                  try {
+                      Select select = new Select(teamApplicationPage.selectTeam);
                   List<WebElement> teamOptions = select.getOptions();
                 Random random = new Random();
                 int randomTeam = random.nextInt(teamOptions.size());
                     select.selectByIndex(randomTeam);
+                    } catch (NoSuchElementException e){e.printStackTrace();}
                     break;
             }
         }

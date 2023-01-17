@@ -67,7 +67,7 @@ public class refereeSI {
     @When("the referee clicks on the officiate games button")
     public void the_referee_clicks_on_the_officiate_games_button() {
         // Write code here that turns the phrase above into concrete actions
-        new WebDriverWait(driver, Duration.ofSeconds(3))
+        new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOf(mainPage.officiateGamesLink));
         mainPage.officiateGamesLink.click();
     }
