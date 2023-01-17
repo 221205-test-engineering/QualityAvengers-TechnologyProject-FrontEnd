@@ -1,4 +1,4 @@
-package com.revature.admin.pages;
+package com.revature.pages;
 
 import java.util.*;
 import org.openqa.selenium.WebDriver;
