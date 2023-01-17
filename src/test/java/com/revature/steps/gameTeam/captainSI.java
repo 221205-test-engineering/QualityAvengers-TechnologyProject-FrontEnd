@@ -32,7 +32,7 @@ public class captainSI {
         new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.elementToBeClickable(indexPage.loginButton));
         indexPage.loginButton.click();
-        loginPage.usernameField.sendKeys("Jessika202");
+        loginPage.usernameField.sendKeys("Bobby202");
         loginPage.passwordField.sendKeys("pass123");
         loginPage.loginButton.click();
 
@@ -98,8 +98,10 @@ public class captainSI {
                 List<WebElement> approveButton = td.findElements(By.xpath("./following-sibling::td/button"));
                 if(approveButton.size() > 0) {
                     approveButton.get(0).click();
+                    break;
                 } else {
                     System.out.println("The approve button is not present");
+                    break;
                 }
             }
         }

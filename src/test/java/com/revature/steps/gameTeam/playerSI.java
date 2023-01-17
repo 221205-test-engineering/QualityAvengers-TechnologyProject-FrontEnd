@@ -163,6 +163,7 @@ public class playerSI {
                 Random random = new Random();
                 int randomTeam = random.nextInt(teamOptions.size());
                     select.selectByIndex(randomTeam);
+                    break;
             }
         }
     }
