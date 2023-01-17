@@ -3,7 +3,6 @@ Feature: Player functionalities
   The player wants to be able to login to the system and update their own personal information
   So that they can keep their profile up to date and manage their responsibilities as a player
 
-#5
 
   Scenario: View captains of each team
     Given the player is logged in to the system
