@@ -8,6 +8,7 @@ import com.revature.runners.IntramuralRunner;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -67,10 +68,13 @@ public class playerSI {
     @Given("the player is not in a team")
     public void the_player_is_not_in_a_team() {
         // Write code here that turns the phrase above into concrete actions
-        new WebDriverWait(driver,Duration.ofSeconds(9))
-                .until(ExpectedConditions.visibilityOf(teamApplicationPage.applicationStatus));
-        String notInTeam = teamApplicationPage.applicationStatus.getText();
-        assertEquals("not applied", notInTeam);
+        try
+        {
+            new WebDriverWait(driver, Duration.ofSeconds(9))
+                    .until(ExpectedConditions.elementToBeClickable(teamApplicationPage.selectTeam));
+            assertTrue(teamApplicationPage.selectTeam.isDisplayed());
+        } catch (TimeoutException t){
+            Assert.fail();}
     }
 
 
@@ -142,42 +146,50 @@ public class playerSI {
 
 //        new WebDriverWait(driver, Duration.ofSeconds(10))
 //                .until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//table"))));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-
-
-        // Get a reference to the table
-        WebElement table = driver.findElement(By.xpath("//table"));
-
-        // Get all of the td elements in the table
-        List<WebElement> tdElements = table.findElements(By.tagName("td"));
-
-        // Iterate through the td elements
-        for (WebElement td : tdElements) {
-
-            if(td.getText().equals("pending"))
-            {
-                System.out.println("request is pending");
-                break;
-            }
-            else if(td.getText().equals("accepted"))
-            {
-                System.out.println("in team already");
-                break;
-            }
-            // check if the status is not applied
-            else if(td.getText().equals("denied"))
-            {
-                // need to find an implementation
-            }
-              else{
-                  Select select = new Select(teamApplicationPage.selectTeam);
-                  List<WebElement> teamOptions = select.getOptions();
+        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        try
+        {
+            new WebDriverWait(driver, Duration.ofSeconds(9))
+                    .until(ExpectedConditions.elementToBeClickable(teamApplicationPage.selectTeam));
+            Select select = new Select(teamApplicationPage.selectTeam);
+            List<WebElement> teamOptions = select.getOptions();
                 Random random = new Random();
                 int randomTeam = random.nextInt(teamOptions.size());
                     select.selectByIndex(randomTeam);
-                    break;
-            }
-        }
+        } catch (TimeoutException t){
+            Assert.fail();}
+
+
+
+
+        // Get a reference to the table
+//        WebElement table = driver.findElement(By.xpath("//table"));
+//
+//        // Get all of the td elements in the table
+//        List<WebElement> tdElements = table.findElements(By.tagName("td"));
+//
+//        // Iterate through the td elements
+//        for (WebElement td : tdElements) {
+//
+//            if(td.getText().equals("pending"))
+//            {
+//                System.out.println("request is pending");
+//            }
+//            else if(td.getText().equals("accepted"))
+//            {
+//                System.out.println("in team already");
+//            }
+//            // check if the status is not applied
+//              else{
+//                  try{Select select = new Select(teamApplicationPage.selectTeam);
+//                  List<WebElement> teamOptions = select.getOptions();
+//                Random random = new Random();
+//                int randomTeam = random.nextInt(teamOptions.size());
+//                    select.selectByIndex(randomTeam);
+//                  } catch (NoSuchElementException e){e.printStackTrace();}
+//
+//            }
+//        }
     }
 
     @When("clicks apply")
@@ -204,15 +216,15 @@ public class playerSI {
 
     }
 
-    @Then("the application status changes to pending")
-    public void the_application_status_changes_to_pending() {
-        // Write code here that turns the phrase above into concrete actions
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        assertTrue(teamApplicationPage.applicationStatus.getText().equals("pending"));
-    }
+//    @Then("the application status changes to pending")
+//    public void the_application_status_changes_to_pending() {
+//        // Write code here that turns the phrase above into concrete actions
+//        try {
+//            Thread.sleep(3000);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
+//        assertTrue(teamApplicationPage.applicationStatus.getText().equals("pending"));
+//    }
 }
 

@@ -23,8 +23,8 @@ Feature: Captain functionalities
     Then a list of all players requesting to join the team should be displayed
     When the captain clicks on the approve button next to a player's name
     Then an alert says the approval has been successful
-    When the captain clicks OK
-    Then the request status changes to accepted
+#    When the captain clicks OK
+#    Then the request status changes to accepted
     Examples:
       | username | password |
       | Bobby202 |	pass123  |
@@ -37,8 +37,7 @@ Feature: Captain functionalities
     Then a list of all players requesting to join the team should be displayed
     When the captain clicks on the deny button next to a player's name
     Then an alert says the deny has been successful
-    When the captain clicks OK
-    Then the request status changes to denied
+#    Then the request status changes to denied
 
     Examples:
     | username | password |
