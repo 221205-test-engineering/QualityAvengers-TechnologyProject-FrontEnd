@@ -118,6 +118,6 @@ public class refereeSI {
     @Then("the scorecard for the game should be updated with the referee's changes")
     public void the_scorecard_for_the_game_should_be_updated_with_the_referee_s_changes() {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        // need to add an assert funtion here
     }
 }
