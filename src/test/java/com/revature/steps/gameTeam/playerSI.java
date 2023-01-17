@@ -44,6 +44,18 @@ public class playerSI {
         loginPage.loginButton.click();
     }
 
+    @Given("the player is logged in to the system by using their {string} and {string}")
+    public void the_player_is_logged_in_to_the_system_by_using_their_and(String username, String password) {
+        // Write code here that turns the phrase above into concrete actions
+        driver.get("http://127.0.0.1:5500/index.html");
+        new WebDriverWait(driver, Duration.ofSeconds(5))
+                .until(ExpectedConditions.elementToBeClickable(indexPage.loginButton));
+        indexPage.loginButton.click();
+        loginPage.usernameField.sendKeys(username);
+        loginPage.passwordField.sendKeys(password);
+        loginPage.loginButton.click();
+    }
+
     @Given("the player is on the team application page")
     public void the_player_is_on_the_team_application_page() {
         // Write code here that turns the phrase above into concrete actions

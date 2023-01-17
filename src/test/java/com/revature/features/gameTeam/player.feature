@@ -16,8 +16,8 @@ Feature: Player functionalities
 
 #4
 
-  Scenario: Apply to join a team
-    Given the player is logged in to the system
+  Scenario Outline: Apply to join a team
+    Given the player is logged in to the system by using their "<username>" and "<password>"
     Given the player is on the team application page
     Given the player is not in a team
     Then a list of teams should be displayed
@@ -25,5 +25,19 @@ Feature: Player functionalities
     And clicks apply
     Then an alert says the application has been successful
     Then the application status changes to pending
+
+  Examples:
+  | username | password |
+  | eegdell0 |	DyAU3y5hLA|
+  |slafoy1   |	3hOS1nh|
+  |mgoodhay2 |	FHsI2MXUb|
+  |phanrott3 |	rVufrSxG |
+  |margo23   |	eCItXyih    |
+  |cmeekings6|	Ft2RahrB    |
+  |rscreas8  |	gMhQ8W5ZObv |
+  |cwippermann9|	AFUp4lI0lOMS|
+  |mreddicka   |	EOG8Mb      |
+  |backermannb |	dDk0hto     |
+  |chutablec   |	swB1brkS2   |
 
 #2

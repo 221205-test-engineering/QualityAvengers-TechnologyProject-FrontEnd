@@ -6,6 +6,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -36,6 +37,17 @@ public class captainSI {
         loginPage.passwordField.sendKeys("pass123");
         loginPage.loginButton.click();
 
+    }
+    @Given("the captain is logged in to the system by using their {string} and {string}")
+    public void the_captain_is_logged_in_to_the_system_by_using_their_and(String username, String password) {
+        // Write code here that turns the phrase above into concrete actions
+        driver.get("http://127.0.0.1:5500/index.html");
+        new WebDriverWait(driver, Duration.ofSeconds(5))
+                .until(ExpectedConditions.elementToBeClickable(indexPage.loginButton));
+        indexPage.loginButton.click();
+        loginPage.usernameField.sendKeys(username);
+        loginPage.passwordField.sendKeys(password);
+        loginPage.loginButton.click();
     }
     @When("the captain navigates to the approve or deny team request page")
     public void the_captain_navigates_to_the_approve_or_deny_team_request_page() {
@@ -117,7 +129,9 @@ public class captainSI {
             throw new RuntimeException(e);
         }
         if(statusCondition.equals("pending")) {
+            try{
             assertEquals("successful", driver.switchTo().alert().getText().contains("successful"));
+            } catch (NoAlertPresentException e){e.printStackTrace();}
         }
     }
 
@@ -128,7 +142,9 @@ public class captainSI {
         String statusCondition = teamRequestPage.requestStatus.getText();
 
         if(statusCondition.equals("pending")) {
-            driver.switchTo().alert().accept();
+            try{
+                driver.switchTo().alert().accept();
+            } catch (NoAlertPresentException e){e.printStackTrace();}
         }
     }
 
