@@ -30,7 +30,7 @@ public class GameImpl
         driver.get("http://127.0.0.1:5500/index.html");
         indexPage.loginButton.click();
         logIn.usernameField.sendKeys("Bobby202");
-        logIn.passwordField.sendKeys("pass123");
+        logIn.passwordField.sendKeys("newpass123");
         logIn.loginButton.click();
     }
 
@@ -50,7 +50,7 @@ public class GameImpl
               so instead of the test failing due to an exception
               it will fail because of a false condition
             */
-            Assert.assertTrue(false);
+            Assert.fail();
         }
     }
 
