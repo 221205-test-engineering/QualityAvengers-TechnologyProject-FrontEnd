@@ -73,8 +73,9 @@ public class refereeSI {
     }
 
     @Then("the referee should see a list of games they've chosen to officiate")
-    public void the_referee_should_see_a_list_of_games_they_ve_chosen_to_officiate() {
+    public void the_referee_should_see_a_list_of_games_they_ve_chosen_to_officiate() throws InterruptedException {
         // Write code here that turns the phrase above into concrete actions
+        Thread.sleep(4000);
         WebElement teamTable = driver.findElement(By.id("gameTableBody"));
         List<WebElement> rows = teamTable.findElements(By.xpath(".//tr"));
 

@@ -5,6 +5,7 @@ import com.revature.runners.IntramuralRunner;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
@@ -57,15 +58,6 @@ public class captainSI {
         mainPage.teamRequestLink.click();
     }
 
-//    @Then("a list of all players requesting to join the team should be displayed with their status reading pending")
-//    public void a_list_of_all_players_requesting_to_join_the_team_should_be_displayed_with_their_status_reading_pending() {
-//        // Write code here that turns the phrase above into concrete actions
-//        new WebDriverWait(driver, Duration.ofSeconds(5))
-//                .until(ExpectedConditions.visibilityOf(teamRequestPage.requestList));
-//        teamRequestPage.requestList.isDisplayed();
-//        assertTrue(teamRequestPage.requestList.isDisplayed());
-//                //.getText().equals("pending")); // need to add a pending compare when new request
-//    }
 
     @Then("a list of all players requesting to join the team should be displayed")
     public void a_list_of_all_players_requesting_to_join_the_team_should_be_displayed() {
@@ -110,10 +102,8 @@ public class captainSI {
                 List<WebElement> approveButton = td.findElements(By.xpath("./following-sibling::td/button"));
                 if(approveButton.size() > 0) {
                     approveButton.get(0).click();
-                    break;
                 } else {
                     System.out.println("The approve button is not present");
-                    break;
                 }
             }
         }
@@ -131,19 +121,7 @@ public class captainSI {
         if(statusCondition.equals("pending")) {
             try{
             assertEquals("successful", driver.switchTo().alert().getText().contains("successful"));
-            } catch (NoAlertPresentException e){e.printStackTrace();}
-        }
-    }
-
-    @When("the captain clicks OK")
-    public void the_captain_clicks_ok() {
-        // Write code here that turns the phrase above into concrete actions
-
-        String statusCondition = teamRequestPage.requestStatus.getText();
-
-        if(statusCondition.equals("pending")) {
-            try{
-                driver.switchTo().alert().accept();
+            driver.switchTo().alert().accept();
             } catch (NoAlertPresentException e){e.printStackTrace();}
         }
     }
@@ -171,7 +149,7 @@ public class captainSI {
                 if(denyButton.size() > 0) {
                     denyButton.get(0).click();
                 } else {
-                    System.out.println("The approve button is not present");
+                    System.out.println("The deny button is not present");
                 }
             }
         }
@@ -184,6 +162,7 @@ public class captainSI {
 
         if(statusCondition.equals("pending")) {
             assertEquals("successful", driver.switchTo().alert().getText().contains("successful"));
+            driver.switchTo().alert().accept();
         }        // need to custom app and deny message
     }
 
