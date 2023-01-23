@@ -7,6 +7,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -31,6 +32,7 @@ public class AdminViewsStepImpn {
     AdminViewsVenuePage venues = AdminRunner.venues;
     @Given("User logged in as Admin")
     public void user_logged_in_as_admin() throws InterruptedException {
+        driver.manage().window().setSize(new Dimension(450,440));
         driver.get("http://127.0.0.1:5500/index.html");
         driver.findElement(By.xpath("//a[text() = 'Login']")).click();
         login.username.sendKeys("Mohan");
