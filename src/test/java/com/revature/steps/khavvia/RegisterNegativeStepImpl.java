@@ -7,6 +7,7 @@ import com.revature.pages.RegisterPage;
 import com.revature.runners.LoginUpdateRegisterRunner;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 
 import static org.junit.Assert.assertEquals;
@@ -26,6 +27,13 @@ public class RegisterNegativeStepImpl {
 
     @Then("the user should see an alert saying fields incomplete")
     public void the_user_should_see_an_alert_saying_fields_incomplete() {
+        /*try{
+            assertEquals("Fields incomplete", driver1.switchTo().alert().getText());
+        }catch(NoAlertPresentException e){
+            System.out.println("Register negative failed");
+        }*/
+
         assertEquals("Fields incomplete", driver1.switchTo().alert().getText());
+
     }
 }

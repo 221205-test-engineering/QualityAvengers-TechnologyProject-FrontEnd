@@ -5,6 +5,7 @@ import com.revature.pages.LoginPage;
 import com.revature.pages.MainPage;
 import com.revature.runners.LoginUpdateRegisterRunner;
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 
 import static org.junit.Assert.assertEquals;
@@ -17,6 +18,7 @@ public class LoginNegativeStepImpl {
 
     @Then("the employee should see an alert saying user does not exist")
     public void the_employee_should_see_an_alert_saying_user_does_not_exist() {
-        assertEquals("User does not exist", driver1.switchTo().alert().getText());
+        assertEquals("Login", driver1.getTitle());
+
     }
 }

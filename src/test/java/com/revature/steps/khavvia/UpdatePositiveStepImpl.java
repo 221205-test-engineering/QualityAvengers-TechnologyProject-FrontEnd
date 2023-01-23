@@ -8,7 +8,9 @@ import com.revature.runners.LoginUpdateRegisterRunner;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -26,33 +28,46 @@ public class UpdatePositiveStepImpl {
         new WebDriverWait(driver1, Duration.ofSeconds(3))
                 .until(ExpectedConditions.elementToBeClickable(indexPage1.loginButton));
         indexPage1.loginButton.click();
-        loginPage1.usernameField.sendKeys("slafoy1");
-        loginPage1.passwordField.sendKeys("3hOS1nh");
+        loginPage1.usernameField.sendKeys("gatorFan99");
+        loginPage1.passwordField.sendKeys("chomp!!");
         loginPage1.loginButton.click();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
     }
     @When("the employee clicks on edit user profile")
     public void the_employee_clicks_on_edit_user_profile() throws InterruptedException {
         mainPage1.editProfileLink.click();
         Thread.sleep(1000);
     }
+    @When("the employee types in pass1234")
+    public void the_employee_types_in_pass1234() {
+        registerPage1.passwordField.clear();
+        registerPage1.passwordField.sendKeys("chomp!!");//////////change this back to pass1234
+    }
     @When("the employee clicks on the checkbox next to display biometrics")
     public void the_employee_clicks_on_the_checkbox_next_to_display_biometrics() {
         registerPage1.biometricsField.click();
     }
+    @When("the user enters link for their profile picture")
+    public void the_user_enters_link_for_their_profile_picture() {
+        registerPage1.profilePictureField.clear();
+        registerPage1.profilePictureField.sendKeys("https://robohash.org/sitnoneos.png?size=150x150&set=set1");
+    }
     @When("the employee clicks on the submit button")
     public void the_employee_clicks_on_the_submit_button() throws InterruptedException{
         registerPage1.submitButton.click();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
+
     }
     @Then("the employee should see an alert saying Are you sure you want to edit your user profile")
     public void the_employee_should_see_an_alert_saying_are_you_sure_you_want_to_edit_your_user_profile() {
         driver1.switchTo().alert();
     }
     @When("the employee clicks ok")
-    public void the_employee_clicks_ok() {
+    public void the_employee_clicks_ok() throws InterruptedException{
         driver1.switchTo().alert().accept();
+        Thread.sleep(1000);
     }
+
     @Then("the employee should see an alert saying update successful")
     public void the_employee_should_see_an_alert_saying_update_successful() {
         driver1.switchTo().alert().accept();
