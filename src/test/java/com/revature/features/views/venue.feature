@@ -5,7 +5,7 @@ Feature: Viewing all the venues
     When The user presses the Venues button
     Then The user will be able to see all the venues
 
-  Scenario: Viewing all the schedules as an unregistered user
+  #Scenario: Viewing all the schedules as an unregistered user
     #This scenario will fail as any user must log in or register to view anything
-    When The user presses the Venues button
-    Then The user will be able to see all the venues
+    #When The user presses the Venues button
+    #Then The user will be able to see all the venues

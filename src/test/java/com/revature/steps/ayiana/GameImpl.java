@@ -30,7 +30,7 @@ public class GameImpl
         driver.get("http://127.0.0.1:5500/index.html");
         indexPage.loginButton.click();
         logIn.usernameField.sendKeys("Bobby202");
-        logIn.passwordField.sendKeys("newpass123");
+        logIn.passwordField.sendKeys("pass1234");
         logIn.loginButton.click();
     }
 
