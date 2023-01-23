@@ -37,8 +37,8 @@ public class UpdatePositiveStepImpl {
        // Thread.sleep(1500);
        // System.out.println("should be login: " + driver1.getTitle());
 
-        loginPage1.usernameField.sendKeys("Bobby202");
-        loginPage1.passwordField.sendKeys("pass123");
+        loginPage1.usernameField.sendKeys("gatorFan99");
+        loginPage1.passwordField.sendKeys("chomp!!");
         loginPage1.loginButton.click();
         Thread.sleep(2000);
 
@@ -52,15 +52,15 @@ public class UpdatePositiveStepImpl {
         Thread.sleep(1000);
 
         //
-        System.out.println("printing something" + driver1.getTitle());
+        //System.out.println("printing something" + driver1.getTitle());
     }
     @When("the employee types in pass1234")
     public void the_employee_types_in_pass1234() {
         registerPage1.passwordField.clear();
-        registerPage1.passwordField.sendKeys("pass1234");
+        registerPage1.passwordField.sendKeys("pass1234");//////////
 
         //
-        System.out.println("printing something" + driver1.getTitle());
+        //System.out.println("printing something" + driver1.getTitle());
     }
     @When("the employee clicks on the checkbox next to display biometrics")
     public void the_employee_clicks_on_the_checkbox_next_to_display_biometrics() {
@@ -73,31 +73,23 @@ public class UpdatePositiveStepImpl {
         Thread.sleep(2000);
 
         //
-        System.out.println("printing something" + driver1.getTitle());
+        //driver1.switchTo().alert();
+
     }
     @Then("the employee should see an alert saying Are you sure you want to edit your user profile")
     public void the_employee_should_see_an_alert_saying_are_you_sure_you_want_to_edit_your_user_profile() {
         driver1.switchTo().alert();
-
-        //
-        System.out.println("printing something" + driver1.getTitle());
     }
     @When("the employee clicks ok")
     public void the_employee_clicks_ok() throws InterruptedException{
         driver1.switchTo().alert().accept();
         Thread.sleep(2000);
-
-        //
-        System.out.println("printing something" + driver1.getTitle());
     }
 
     // fix this
     @Then("the employee should see an alert saying update successful")
     public void the_employee_should_see_an_alert_saying_update_successful() {
         driver1.switchTo().alert().accept();
-
-        //
-        System.out.println("printing something" + driver1.getTitle());
     }
 
 }

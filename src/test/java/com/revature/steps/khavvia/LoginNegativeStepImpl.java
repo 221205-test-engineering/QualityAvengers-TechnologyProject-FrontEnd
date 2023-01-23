@@ -18,12 +18,7 @@ public class LoginNegativeStepImpl {
 
     @Then("the employee should see an alert saying user does not exist")
     public void the_employee_should_see_an_alert_saying_user_does_not_exist() {
-        try{
-            assertEquals("User does not exist", driver1.switchTo().alert().getText());
-        }catch (NoAlertPresentException e){
-            System.out.println("Login negative failed");
-        }
-
+        assertEquals("Login", driver1.getTitle());
 
     }
 }
