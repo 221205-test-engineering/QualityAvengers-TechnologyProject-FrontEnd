@@ -11,8 +11,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 @RunWith(Cucumber.class)
+
+// UNCOMMENT THIS!!
+/*
 @CucumberOptions(features = "src/test/java/com/revature/features/login_update_register",
                  glue = "com.revature.steps.khavvia")
+*/
+
+@CucumberOptions(features = "src/test/java/com/revature/features/login_update_register/update_positive.feature",
+        glue = "com.revature.steps.khavvia")
+
 public class LoginUpdateRegisterRunner {
     public static WebDriver driver1;
     public static IndexPage indexPage1;

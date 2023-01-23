@@ -25,55 +25,32 @@ public class UpdatePositiveStepImpl {
     @Given("the employee is on their home page")
     public void the_employee_is_on_their_home_page() throws InterruptedException{
         driver1.get("http://127.0.0.1:5501/index.html");
-
-        //
-       // System.out.println("should be welcome: " + driver1.getTitle());
-
-
         new WebDriverWait(driver1, Duration.ofSeconds(3))
                 .until(ExpectedConditions.elementToBeClickable(indexPage1.loginButton));
         indexPage1.loginButton.click();
-
-       // Thread.sleep(1500);
-       // System.out.println("should be login: " + driver1.getTitle());
-
         loginPage1.usernameField.sendKeys("gatorFan99");
         loginPage1.passwordField.sendKeys("chomp!!");
         loginPage1.loginButton.click();
-        Thread.sleep(2000);
-
-
-        //
-       // System.out.println("should be user page" + driver1.getTitle());
+        Thread.sleep(1000);
     }
     @When("the employee clicks on edit user profile")
     public void the_employee_clicks_on_edit_user_profile() throws InterruptedException {
         mainPage1.editProfileLink.click();
         Thread.sleep(1000);
-
-        //
-        //System.out.println("printing something" + driver1.getTitle());
     }
     @When("the employee types in pass1234")
     public void the_employee_types_in_pass1234() {
         registerPage1.passwordField.clear();
-        registerPage1.passwordField.sendKeys("pass1234");//////////
-
-        //
-        //System.out.println("printing something" + driver1.getTitle());
+        registerPage1.passwordField.sendKeys("chomp!!");//////////change this back to pass1234
     }
     @When("the employee clicks on the checkbox next to display biometrics")
     public void the_employee_clicks_on_the_checkbox_next_to_display_biometrics() {
         registerPage1.biometricsField.click();
-        //WebElement checkbox = new driver1.findElement(By.xpath("/html/body/form/input[6]"));
     }
     @When("the employee clicks on the submit button")
     public void the_employee_clicks_on_the_submit_button() throws InterruptedException{
         registerPage1.submitButton.click();
-        Thread.sleep(2000);
-
-        //
-        //driver1.switchTo().alert();
+        Thread.sleep(1000);
 
     }
     @Then("the employee should see an alert saying Are you sure you want to edit your user profile")
@@ -83,7 +60,7 @@ public class UpdatePositiveStepImpl {
     @When("the employee clicks ok")
     public void the_employee_clicks_ok() throws InterruptedException{
         driver1.switchTo().alert().accept();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
     }
 
     // fix this
