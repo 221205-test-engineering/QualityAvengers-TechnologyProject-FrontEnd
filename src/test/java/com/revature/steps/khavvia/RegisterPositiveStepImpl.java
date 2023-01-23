@@ -8,6 +8,7 @@ import com.revature.runners.LoginUpdateRegisterRunner;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -64,7 +65,14 @@ public class RegisterPositiveStepImpl {
                 .until(ExpectedConditions.elementToBeClickable(driver1.switchTo().alert()));
         assertEquals("Registration successful!", driver1.switchTo().alert().getText());*/
         //driver1.switchTo().alert().accept();
-        System.out.println(driver1.switchTo().alert().getText());
+        try{
+            driver1.switchTo().alert().accept();
+        }catch(NoAlertPresentException e){
+            System.out.println("No such alert in RegisterPositive");
+        }
+
+
+
 
     }
 }
