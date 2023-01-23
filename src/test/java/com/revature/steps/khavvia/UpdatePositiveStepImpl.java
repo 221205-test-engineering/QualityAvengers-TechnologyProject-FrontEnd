@@ -47,6 +47,11 @@ public class UpdatePositiveStepImpl {
     public void the_employee_clicks_on_the_checkbox_next_to_display_biometrics() {
         registerPage1.biometricsField.click();
     }
+    @When("the user enters link for their profile picture")
+    public void the_user_enters_link_for_their_profile_picture() {
+        registerPage1.profilePictureField.clear();
+        registerPage1.profilePictureField.sendKeys("https://robohash.org/sitnoneos.png?size=150x150&set=set1");
+    }
     @When("the employee clicks on the submit button")
     public void the_employee_clicks_on_the_submit_button() throws InterruptedException{
         registerPage1.submitButton.click();
@@ -63,7 +68,6 @@ public class UpdatePositiveStepImpl {
         Thread.sleep(1000);
     }
 
-    // fix this
     @Then("the employee should see an alert saying update successful")
     public void the_employee_should_see_an_alert_saying_update_successful() {
         driver1.switchTo().alert().accept();

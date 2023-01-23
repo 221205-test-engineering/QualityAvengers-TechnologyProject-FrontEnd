@@ -42,11 +42,13 @@ public class RegisterPositiveStepImpl {
     @When("the user types in {int} for their height")
     public void the_user_types_in_for_their_height(Integer int1) {
         String height = Integer.toString(int1);
+        registerPage1.heightField.clear();
         registerPage1.heightField.sendKeys(height);
     }
     @When("the user types in {int} for their weight")
     public void the_user_types_in_for_their_weight(Integer int1) {
         String weight = Integer.toString(int1);
+        registerPage1.weightField.clear();
         registerPage1.weightField.sendKeys(weight);
     }
     @When("the user clicks on the checkbox next to display biometrics")
@@ -56,7 +58,7 @@ public class RegisterPositiveStepImpl {
     @When("the user clicks submit")
     public void the_user_clicks_submit() throws InterruptedException{
         registerPage1.submitButton.click();
-        Thread.sleep(3000);
+        Thread.sleep(1000);
     }
     @Then("the user should see an alert saying registration successful")
     public void the_user_should_see_an_alert_saying_registration_successful() {
