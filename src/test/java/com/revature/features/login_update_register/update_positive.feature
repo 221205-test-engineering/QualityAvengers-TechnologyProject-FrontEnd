@@ -13,15 +13,15 @@ Background:
 
   Scenario: Update password
     When the employee types in pass1234
-    When the employee clicks submit
+    When the user clicks submit
     Then the employee should see an alert saying Are you sure you want to edit your user profile
     When the employee clicks ok
     Then the employee should see an alert saying update successful
 
   Scenario: Update height/weight
-    When the employee types in 80 for height
-    When the employee types in 200 for weight
-    When the employee hits submit
+    When the user types in 80 for their height
+    When the user types in 200 for their weight
+    When the user clicks submit
     Then the employee should see an alert saying Are you sure you want to edit your user profile
     When the employee clicks ok
     Then the employee should see an alert saying update successful

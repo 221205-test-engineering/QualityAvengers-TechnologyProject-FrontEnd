@@ -63,7 +63,8 @@ public class RegisterPositiveStepImpl {
         /*new WebDriverWait(driver1, Duration.ofSeconds(3))
                 .until(ExpectedConditions.elementToBeClickable(driver1.switchTo().alert()));
         assertEquals("Registration successful!", driver1.switchTo().alert().getText());*/
-        driver1.switchTo().alert().accept();
+        //driver1.switchTo().alert().accept();
+        System.out.println(driver1.switchTo().alert().getText());
 
     }
 }
